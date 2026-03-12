@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Palette Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <h1>Color Palette Generator</h1>
+      <button class="btn-icon" id="themeToggle" title="Toggle dark/light mode" aria-label="Toggle theme">
+        <span class="icon-light">&#9788;</span>
+        <span class="icon-dark">&#9790;</span>
+      </button>
+    </div>
+    <p class="subtitle">Choose a base color to generate harmonious color schemes</p>
+  </header>
+
+  <main class="main">
+    <section class="picker-section">
+      <div class="picker-row">
+        <h2>Base Color</h2>
+        <div class="toolbar">
+          <div class="format-toggle" id="formatToggle">
+            <button class="format-btn active" data-format="hex">HEX</button>
+            <button class="format-btn" data-format="rgb">RGB</button>
+            <button class="format-btn" data-format="hsl">HSL</button>
+          </div>
+          <button class="btn btn-secondary" id="randomBtn" title="Random color">Random</button>
+          <button class="btn btn-secondary" id="favoritesToggleBtn" title="Show favorites">Favorites</button>
+        </div>
+      </div>
+      <div class="picker-controls">
+        <div class="picker-group">
+          <label for="colorPicker">Color Picker</label>
+          <input type="color" id="colorPicker" value="#4A90D9">
+        </div>
+        <div class="picker-group">
+          <label for="hexInput">HEX Value</label>
+          <div class="hex-input-wrapper">
+            <span class="hex-prefix">#</span>
+            <input type="text" id="hexInput" maxlength="6" placeholder="4A90D9" value="4A90D9">
+          </div>
+        </div>
+      </div>
+      <div class="base-color-preview" id="baseColorPreview">
+        <span id="baseColorLabel">#4A90D9</span>
+      </div>
+    </section>
+
+    <!-- Favorites Panel (hidden by default) -->
+    <section class="favorites-panel" id="favoritesPanel" style="display:none;">
+      <div class="favorites-header">
+        <h2>Saved Palettes</h2>
+        <button class="btn-icon btn-close" id="favoritesCloseBtn" title="Close favorites">&times;</button>
+      </div>
+      <div class="favorites-list" id="favoritesList">
+        <p class="empty-msg">No saved palettes yet.</p>
+      </div>
+    </section>
+
+    <section class="schemes-section" id="schemesSection">
+      <!-- Color schemes rendered by JS -->
+    </section>
+  </main>
+
+  <div class="toast" id="toast">Copied!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
