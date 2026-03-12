@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Speed Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Typing Speed Test</h1>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <!-- Text Type Selector -->
+      <div class="control-group">
+        <span class="control-label">Text</span>
+        <div class="btn-group" id="textTypeGroup">
+          <button class="btn-option active" data-type="english">English</button>
+          <button class="btn-option" data-type="code">Code</button>
+          <button class="btn-option" data-type="quotes">Quotes</button>
+        </div>
+      </div>
+
+      <!-- Time Selector -->
+      <div class="control-group">
+        <span class="control-label">Time</span>
+        <div class="btn-group" id="timeGroup">
+          <button class="btn-option" data-time="15">15s</button>
+          <button class="btn-option" data-time="30">30s</button>
+          <button class="btn-option active" data-time="60">60s</button>
+          <button class="btn-option" data-time="120">120s</button>
+        </div>
+      </div>
+
+      <!-- Sound Toggle -->
+      <div class="control-group">
+        <span class="control-label">Sound</span>
+        <div class="sound-controls">
+          <button class="btn-sound" id="btnSound" title="Toggle sound">&#128264;</button>
+          <select id="soundType" class="sound-select" disabled>
+            <option value="mechanical">Mechanical</option>
+            <option value="typewriter">Typewriter</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-label">WPM</span>
+        <span class="stat-value" id="wpm">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Accuracy</span>
+        <span class="stat-value" id="accuracy">100%</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Time</span>
+        <span class="stat-value" id="timer">60s</span>
+      </div>
+    </div>
+
+    <!-- Typing Area -->
+    <div class="typing-area" id="typingArea">
+      <div class="text-display" id="textDisplay"></div>
+    </div>
+
+    <!-- Hidden Input -->
+    <input type="text" id="hiddenInput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+    <!-- Restart Button -->
+    <button class="btn-restart" id="btnRestart">Restart</button>
+
+    <!-- Result Panel (hidden by default) -->
+    <div class="result-panel hidden" id="resultPanel">
+      <h2>Test Complete!</h2>
+      <div class="result-stats">
+        <div class="result-item">
+          <span class="result-number" id="resultWpm">0</span>
+          <span class="result-label">WPM</span>
+        </div>
+        <div class="result-item">
+          <span class="result-number" id="resultAccuracy">0%</span>
+          <span class="result-label">Accuracy</span>
+        </div>
+        <div class="result-item">
+          <span class="result-number" id="resultChars">0</span>
+          <span class="result-label">Characters</span>
+        </div>
+      </div>
+
+      <!-- WPM Chart -->
+      <div class="chart-container">
+        <h3>WPM Over Time</h3>
+        <canvas id="wpmChart" width="700" height="200"></canvas>
+      </div>
+
+      <!-- Error Stats -->
+      <div class="error-stats" id="errorStats">
+        <h3>Most Missed Characters</h3>
+        <div class="error-bars" id="errorBars"></div>
+      </div>
+
+      <button class="btn-restart" id="btnRestartResult">Try Again</button>
+    </div>
+
+    <!-- History Section -->
+    <div class="history-section" id="historySection">
+      <div class="history-header">
+        <h3>Recent Results</h3>
+        <button class="btn-clear-history" id="btnClearHistory">Clear History</button>
+      </div>
+      <table class="history-table" id="historyTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>WPM</th>
+            <th>Accuracy</th>
+            <th>Time</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+      <p class="history-empty hidden" id="historyEmpty">No results yet. Complete a test to see your history.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

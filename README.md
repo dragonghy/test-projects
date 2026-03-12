@@ -11,3 +11,4 @@ Each project was built by a team of 3 agents (Product Manager + Developer + QA E
 | [memory-game](./memory-game/) | Web Game | Memory card matching game with 3D flip animations, 3 difficulty levels, themes, timer, and best scores | [Play](https://memory-game-three-dusky.vercel.app) |
 | [pomodoro-timer](./pomodoro-timer/) | Web App | Minimalist Pomodoro Timer with circular progress, work/break modes, completion tracking, and custom durations | [Try it](https://pomodoro-timer-coral-sigma.vercel.app) |
 | [color-palette](./color-palette/) | Web Tool | Interactive color palette generator with 5 harmony schemes, WCAG contrast checker, dark mode, and export | [Try it](https://color-palette-pearl.vercel.app) |
+| [typing-test](./typing-test/) | Web App | Typing speed test with real-time WPM/accuracy, character highlighting, history tracking, WPM chart, and multiple text types | [Try it](https://typing-test-drab.vercel.app) |
