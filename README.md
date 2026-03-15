@@ -12,3 +12,4 @@ Each project was built by a team of 3 agents (Product Manager + Developer + QA E
 | [pomodoro-timer](./pomodoro-timer/) | Web App | Minimalist Pomodoro Timer with circular progress, work/break modes, completion tracking, and custom durations | [Try it](https://pomodoro-timer-coral-sigma.vercel.app) |
 | [color-palette](./color-palette/) | Web Tool | Interactive color palette generator with 5 harmony schemes, WCAG contrast checker, dark mode, and export | [Try it](https://color-palette-pearl.vercel.app) |
 | [typing-test](./typing-test/) | Web App | Typing speed test with real-time WPM/accuracy, character highlighting, history tracking, WPM chart, and multiple text types | [Try it](https://typing-test-drab.vercel.app) |
+| [kanban-board](./kanban-board/) | Web App | Interactive Kanban board with drag & drop, priority labels, search filter, undo (Ctrl+Z), and JSON export/import | [Try it](https://kanban-board-theta-pied.vercel.app) |

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-top">
+      <h1>Kanban Board</h1>
+      <div class="header-actions">
+        <button class="header-btn" id="export-btn" title="Export board data">Export</button>
+        <button class="header-btn" id="import-btn" title="Import board data">Import</button>
+        <input type="file" id="import-file" accept=".json" hidden>
+      </div>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search cards by title or description...">
+    </div>
+  </header>
+
+  <main class="board">
+    <div class="column" id="todo" data-status="todo">
+      <div class="column-header column-header--todo">
+        <h2>To Do <span class="card-count" id="todo-count">(0)</span></h2>
+      </div>
+      <div class="card-list" id="todo-list"></div>
+      <button class="add-card-btn" data-column="todo">+ Add Card</button>
+      <div class="add-card-form hidden" data-column="todo">
+        <input type="text" class="card-title-input" placeholder="Card title (required)" required>
+        <textarea class="card-desc-input" placeholder="Description (optional)"></textarea>
+        <div class="priority-select">
+          <label>Priority:</label>
+          <select class="card-priority-input">
+            <option value="">None</option>
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button class="btn-confirm">Add</button>
+          <button class="btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="column" id="inprogress" data-status="inprogress">
+      <div class="column-header column-header--inprogress">
+        <h2>In Progress <span class="card-count" id="inprogress-count">(0)</span></h2>
+      </div>
+      <div class="card-list" id="inprogress-list"></div>
+      <button class="add-card-btn" data-column="inprogress">+ Add Card</button>
+      <div class="add-card-form hidden" data-column="inprogress">
+        <input type="text" class="card-title-input" placeholder="Card title (required)" required>
+        <textarea class="card-desc-input" placeholder="Description (optional)"></textarea>
+        <div class="priority-select">
+          <label>Priority:</label>
+          <select class="card-priority-input">
+            <option value="">None</option>
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button class="btn-confirm">Add</button>
+          <button class="btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="column" id="done" data-status="done">
+      <div class="column-header column-header--done">
+        <h2>Done <span class="card-count" id="done-count">(0)</span></h2>
+      </div>
+      <div class="card-list" id="done-list"></div>
+      <button class="add-card-btn" data-column="done">+ Add Card</button>
+      <div class="add-card-form hidden" data-column="done">
+        <input type="text" class="card-title-input" placeholder="Card title (required)" required>
+        <textarea class="card-desc-input" placeholder="Description (optional)"></textarea>
+        <div class="priority-select">
+          <label>Priority:</label>
+          <select class="card-priority-input">
+            <option value="">None</option>
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button class="btn-confirm">Add</button>
+          <button class="btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Edit Card Modal -->
+  <div class="modal-overlay hidden" id="edit-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Edit Card</h3>
+        <button class="modal-close" id="edit-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label for="edit-title">Title</label>
+        <input type="text" id="edit-title" class="card-title-input" placeholder="Card title (required)">
+        <label for="edit-description">Description</label>
+        <textarea id="edit-description" class="card-desc-input" placeholder="Description (optional)"></textarea>
+        <label for="edit-priority">Priority</label>
+        <select id="edit-priority" class="card-priority-input">
+          <option value="">None</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-confirm" id="edit-save">Save</button>
+        <button class="btn-cancel" id="edit-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
