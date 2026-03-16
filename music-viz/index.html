@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Canvas for visualization -->
+    <canvas id="visualizer"></canvas>
+
+    <!-- Upload overlay (shown when no audio loaded) -->
+    <div id="upload-overlay">
+      <div class="upload-content">
+        <div class="upload-icon">&#127925;</div>
+        <h1>Music Visualizer</h1>
+        <p>Drop an audio file here or click to upload</p>
+        <label for="file-input" class="upload-btn">Choose Audio File</label>
+        <input type="file" id="file-input" accept="audio/*" hidden>
+        <div class="demo-section">
+          <span class="or-divider">or</span>
+          <button id="demo-btn" class="demo-btn">&#9654; Play Demo</button>
+        </div>
+        <p class="supported-formats">Supports MP3, WAV, OGG, FLAC</p>
+      </div>
+    </div>
+
+    <!-- Controls bar -->
+    <div id="controls" class="hidden">
+      <!-- Top row: progress bar -->
+      <div class="progress-container" id="progress-container">
+        <span class="time" id="current-time">0:00</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="time" id="duration">0:00</span>
+      </div>
+
+      <!-- Bottom row: buttons and controls -->
+      <div class="controls-row">
+        <div class="controls-left">
+          <button id="play-btn" class="ctrl-btn" title="Play/Pause">
+            <span class="icon-play">&#9654;</span>
+            <span class="icon-pause hidden">&#9646;&#9646;</span>
+          </button>
+          <div class="volume-control">
+            <span class="volume-icon" id="volume-icon">&#128264;</span>
+            <input type="range" id="volume-slider" min="0" max="100" value="80" class="slider">
+          </div>
+          <div class="sensitivity-control">
+            <span class="sensitivity-label">Sensitivity</span>
+            <input type="range" id="sensitivity-slider" min="0" max="100" value="50" class="slider">
+          </div>
+        </div>
+
+        <div class="controls-center">
+          <span class="file-name" id="file-name"></span>
+        </div>
+
+        <div class="controls-right">
+          <div class="mode-switch">
+            <button id="mode-bars" class="mode-btn active" title="Spectrum Bars">Bars</button>
+            <button id="mode-wave" class="mode-btn" title="Waveform">Wave</button>
+            <button id="mode-circular" class="mode-btn" title="Circular Spectrum">Circle</button>
+            <button id="mode-particles" class="mode-btn" title="Particles">Particles</button>
+          </div>
+          <div class="theme-switch">
+            <button id="theme-neon" class="theme-btn active" title="Neon Theme">Neon</button>
+            <button id="theme-rainbow" class="theme-btn" title="Rainbow Theme">Rainbow</button>
+            <button id="theme-ocean" class="theme-btn" title="Ocean Theme">Ocean</button>
+          </div>
+          <button id="screenshot-btn" class="ctrl-btn" title="Screenshot">&#128247;</button>
+          <button id="fullscreen-btn" class="ctrl-btn" title="Fullscreen">&#x26F6;</button>
+          <label for="file-input-2" class="ctrl-btn upload-new" title="Upload new file">&#128193;</label>
+          <input type="file" id="file-input-2" accept="audio/*" hidden>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+{
+  "total": 81,
+  "passed": 81,
+  "failed": 0,
+  "results": [
+    {
+      "test": "Page title unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Upload overlay visible on load",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Upload hides overlay",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Upload shows controls",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "File name displayed",
+      "status": "PASS",
+      "detail": "'test.wav'"
+    },
+    {
+      "test": "Duration shown (mm:ss)",
+      "status": "PASS",
+      "detail": "Duration: 0:05"
+    },
+    {
+      "test": "Play button visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Play/Pause toggles",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Volume slider visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Volume initial=80",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Progress bar visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Current time displays",
+      "status": "PASS",
+      "detail": "Time: 0:02"
+    },
+    {
+      "test": "Demo button exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Demo button visible on upload page",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Demo button text contains 'Play Demo'",
+      "status": "PASS",
+      "detail": "Text: '\u25b6 Play Demo'"
+    },
+    {
+      "test": "Demo hides overlay",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Demo shows controls",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Demo displays info text",
+      "status": "PASS",
+      "detail": "'Demo Beat (128 BPM)'"
+    },
+    {
+      "test": "Demo duration displayed",
+      "status": "PASS",
+      "detail": "Duration: 0:30"
+    },
+    {
+      "test": "Demo auto-plays (pause icon shown)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Demo triggers visualization",
+      "status": "PASS",
+      "detail": "Non-black samples: 32607"
+    },
+    {
+      "test": "Mode button #mode-bars exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Mode button #mode-wave exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Mode button #mode-circular exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Mode button #mode-particles exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Bars mode active by default",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Bars mode renders content",
+      "status": "PASS",
+      "detail": "Samples: 7486"
+    },
+    {
+      "test": "Wave mode activated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Bars deactivated on Wave switch",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Wave mode renders content",
+      "status": "PASS",
+      "detail": "Samples: 39092"
+    },
+    {
+      "test": "Circular mode activated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Circular mode renders content",
+      "status": "PASS",
+      "detail": "Samples: 4800"
+    },
+    {
+      "test": "Particles mode activated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Particles mode renders content",
+      "status": "PASS",
+      "detail": "Samples: 9366"
+    },
+    {
+      "test": "Only 1 mode active at a time",
+      "status": "PASS",
+      "detail": "Active count: 1"
+    },
+    {
+      "test": "Theme button #theme-neon exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Theme button #theme-rainbow exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Theme button #theme-ocean exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Neon theme active by default",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Rainbow theme activated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Neon deactivated on Rainbow switch",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Ocean theme activated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Only 1 theme active at a time",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Neon theme can be re-activated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Sensitivity slider exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Sensitivity slider visible at desktop",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Sensitivity default=50",
+      "status": "PASS",
+      "detail": "Value: 50"
+    },
+    {
+      "test": "Sensitivity label exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Sensitivity label text",
+      "status": "PASS",
+      "detail": "Label: 'Sensitivity'"
+    },
+    {
+      "test": "Sensitivity slider value updates",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Sensitivity slider moves to high",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Screenshot button exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Screenshot button visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Canvas toDataURL works for screenshot",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Screenshot triggers download",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Screenshot filename correct",
+      "status": "PASS",
+      "detail": "Filename: 'music-viz-screenshot.png'"
+    },
+    {
+      "test": "Downloaded screenshot saved",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Key '3' switches to Circular",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Key '4' switches to Particles",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Key '1' switches to Bars (regression)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Key '2' switches to Wave (regression)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Key 'S' triggers screenshot download",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "File name shows correctly",
+      "status": "PASS",
+      "detail": "'test.wav'"
+    },
+    {
+      "test": "Duration format mm:ss",
+      "status": "PASS",
+      "detail": "'0:05'"
+    },
+    {
+      "test": "Current time format mm:ss",
+      "status": "PASS",
+      "detail": "'0:01'"
+    },
+    {
+      "test": "Current time updates during playback",
+      "status": "PASS",
+      "detail": "'0:03'"
+    },
+    {
+      "test": "Sensitivity slider visible at 1280px desktop",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Theme buttons visible at 1280px desktop",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Sensitivity hidden on mobile (375px)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Mode buttons visible on mobile",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Controls wrap on mobile",
+      "status": "PASS",
+      "detail": "flex-wrap: wrap"
+    },
+    {
+      "test": "Theme buttons hidden at 360px (very small)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Demo button visible on mobile upload",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Fullscreen button visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Fullscreen API available",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "No console errors on load",
+      "status": "PASS",
+      "detail": "Clean"
+    },
+    {
+      "test": "All 22 required elements present",
+      "status": "PASS",
+      "detail": "All present"
+    },
+    {
+      "test": "CSS theme variables loaded",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Neon + Particles renders",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Rainbow + Circular renders",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Ocean + Wave renders",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

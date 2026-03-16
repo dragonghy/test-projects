@@ -1,0 +1,257 @@
+{
+  "total": 50,
+  "passed": 50,
+  "failed": 0,
+  "results": [
+    {
+      "test": "Page title is 'Music Visualizer'",
+      "status": "PASS",
+      "detail": "Got: 'Music Visualizer'"
+    },
+    {
+      "test": "Upload overlay is visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Heading shows 'Music Visualizer'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Upload button is visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Dark background applied",
+      "status": "PASS",
+      "detail": "bg: rgb(10, 10, 15)"
+    },
+    {
+      "test": "Canvas element exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Controls hidden before audio load",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Neon cyan accent defined",
+      "status": "PASS",
+      "detail": "--accent-cyan: #00f0ff"
+    },
+    {
+      "test": "Neon magenta accent defined",
+      "status": "PASS",
+      "detail": "--accent-magenta: #ff00e5"
+    },
+    {
+      "test": "Upload overlay hidden after file upload",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Controls visible after file upload",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "File name displayed",
+      "status": "PASS",
+      "detail": "Displayed: 'test.wav'"
+    },
+    {
+      "test": "Duration is shown",
+      "status": "PASS",
+      "detail": "Duration: 0:05"
+    },
+    {
+      "test": "Play button exists and visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Play/Pause icons toggle correctly",
+      "status": "PASS",
+      "detail": "play_hidden=True, pause_hidden=False"
+    },
+    {
+      "test": "Play button toggles state on click",
+      "status": "PASS",
+      "detail": "Before: play_hidden=True, After: play_hidden=False"
+    },
+    {
+      "test": "Volume slider exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Volume has initial value",
+      "status": "PASS",
+      "detail": "Volume: 80"
+    },
+    {
+      "test": "Volume icon updates on mute",
+      "status": "PASS",
+      "detail": "Icon after mute: repr='\ud83d\udd07'"
+    },
+    {
+      "test": "Progress bar exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Current time element shows time",
+      "status": "PASS",
+      "detail": "Time: 0:01"
+    },
+    {
+      "test": "Bars mode active by default",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Wave mode inactive by default",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Canvas has rendered content (Bars mode)",
+      "status": "PASS",
+      "detail": "Non-black pixel samples: 6733"
+    },
+    {
+      "test": "Wave mode activated after click",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Bars mode deactivated after switch",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Canvas has rendered content (Wave mode)",
+      "status": "PASS",
+      "detail": "Non-black pixel samples: 29267"
+    },
+    {
+      "test": "Bars mode re-activated on switch back",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Bars button visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Wave button visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Fullscreen button exists and visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Fullscreen API is available",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Fullscreen button has handler attached",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Controls row visible at desktop",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Page renders at tablet width (768px)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Controls row wraps on mobile",
+      "status": "PASS",
+      "detail": "flex-wrap: wrap"
+    },
+    {
+      "test": "File name takes full width on mobile",
+      "status": "PASS",
+      "detail": "flex-basis: 100%"
+    },
+    {
+      "test": "Page renders at small mobile width (360px)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Heading font size reduced on mobile",
+      "status": "PASS",
+      "detail": "Font size: 25.6px"
+    },
+    {
+      "test": "Key '2' switches to Wave mode",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Key '1' switches to Bars mode",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "No console errors on load",
+      "status": "PASS",
+      "detail": "Clean"
+    },
+    {
+      "test": "All required HTML elements present",
+      "status": "PASS",
+      "detail": "14 elements checked, missing: []"
+    },
+    {
+      "test": "CSS theme variables loaded",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Canvas 2D context available",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "File input accepts audio/*",
+      "status": "PASS",
+      "detail": "accept='audio/*'"
+    },
+    {
+      "test": "Drag-over CSS styles defined",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Drag & drop event handlers active",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Second file input exists for re-upload",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Upload new file button visible in controls",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}
