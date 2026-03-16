@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard - 闪卡学习</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header-title" id="headerTitle">
+                <span class="header-icon">📚</span> Flashcard
+            </h1>
+            <p class="header-subtitle" id="headerSubtitle">闪卡学习应用</p>
+        </header>
+
+        <!-- View: Deck List (Home) -->
+        <main id="deckListView" class="view active">
+            <div class="toolbar">
+                <h2>我的卡组</h2>
+                <div class="toolbar-actions">
+                    <button class="btn btn-secondary" id="importDeckHomeBtn">导入卡组</button>
+                    <button class="btn btn-primary" id="addDeckBtn">+ 新建卡组</button>
+                </div>
+            </div>
+            <div id="deckList" class="deck-list">
+                <!-- Deck cards rendered by JS -->
+            </div>
+            <div id="emptyState" class="empty-state" style="display:none;">
+                <div class="empty-icon">📝</div>
+                <p>还没有卡组</p>
+                <p class="empty-hint">点击「新建卡组」开始创建你的第一个卡组</p>
+            </div>
+        </main>
+
+        <!-- View: Deck Detail -->
+        <main id="deckDetailView" class="view">
+            <div class="toolbar">
+                <button class="btn btn-ghost" id="backToDeckListBtn">← 返回</button>
+                <div class="toolbar-actions">
+                    <button class="btn btn-primary" id="startStudyBtn">开始学习</button>
+                    <button class="btn btn-primary btn-quiz" id="startQuizBtn">开始测验</button>
+                    <button class="btn btn-secondary" id="addCardBtn">+ 添加闪卡</button>
+                    <button class="btn btn-secondary" id="exportDeckBtn">导出</button>
+                    <button class="btn btn-ghost" id="editDeckBtn">编辑</button>
+                    <button class="btn btn-danger-ghost" id="deleteDeckBtn">删除卡组</button>
+                </div>
+            </div>
+            <div class="deck-info">
+                <h2 id="deckDetailName"></h2>
+                <p id="deckDetailDesc" class="deck-detail-desc"></p>
+                <div class="deck-meta">
+                    <span id="deckDetailCount" class="badge"></span>
+                    <div class="mastery-summary" id="masterySummary" style="display:none;">
+                        <span class="mastery-label">掌握度</span>
+                        <div class="mastery-bar-container">
+                            <div class="mastery-bar" id="masteryBar" style="width:0%"></div>
+                        </div>
+                        <span class="mastery-percent" id="masteryPercent">0%</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Search bar -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="搜索闪卡（按正面或背面内容）..." />
+            </div>
+            <div id="cardList" class="card-list">
+                <!-- Cards rendered by JS -->
+            </div>
+            <div id="cardEmptyState" class="empty-state" style="display:none;">
+                <div class="empty-icon">🃏</div>
+                <p>这个卡组还没有闪卡</p>
+                <p class="empty-hint">点击「添加闪卡」创建你的第一张闪卡</p>
+            </div>
+            <div id="searchEmptyState" class="empty-state" style="display:none;">
+                <div class="empty-icon">🔍</div>
+                <p>没有找到匹配的闪卡</p>
+            </div>
+        </main>
+
+        <!-- View: Study Mode -->
+        <main id="studyView" class="view">
+            <div class="toolbar">
+                <button class="btn btn-ghost" id="exitStudyBtn">← 退出学习</button>
+                <div class="toolbar-right">
+                    <label class="toggle-switch" title="乱序模式">
+                        <input type="checkbox" id="studyShuffleToggle">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">乱序</span>
+                    </label>
+                    <div class="study-progress-info">
+                        <span id="studyProgressText">第 1 / 1 张</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="studyProgressBar" style="width: 0%"></div>
+            </div>
+            <div class="study-area">
+                <div class="flashcard-container" id="flashcardContainer">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-label">问题</div>
+                            <div class="flashcard-content" id="cardFront"></div>
+                            <div class="flashcard-hint">点击翻转查看答案</div>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <div class="flashcard-label">答案</div>
+                            <div class="flashcard-content" id="cardBack"></div>
+                            <div class="flashcard-hint">点击翻回问题</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="study-nav">
+                    <button class="btn btn-secondary" id="prevCardBtn">← 上一张</button>
+                    <button class="btn btn-secondary" id="nextCardBtn">下一张 →</button>
+                </div>
+                <p class="keyboard-hint">快捷键：← → 切换卡片，空格 翻转，Esc 退出</p>
+            </div>
+        </main>
+
+        <!-- View: Quiz Mode -->
+        <main id="quizView" class="view">
+            <div class="toolbar">
+                <button class="btn btn-ghost" id="exitQuizBtn">← 退出测验</button>
+                <div class="toolbar-right">
+                    <label class="toggle-switch" title="乱序模式">
+                        <input type="checkbox" id="quizShuffleToggle" checked>
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">乱序</span>
+                    </label>
+                    <div class="study-progress-info">
+                        <span id="quizProgressText">第 1 / 1 张</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="quizProgressBar" style="width: 0%"></div>
+            </div>
+            <div class="study-area">
+                <div class="flashcard-container" id="quizFlashcardContainer">
+                    <div class="flashcard" id="quizFlashcard">
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-label">问题</div>
+                            <div class="flashcard-content" id="quizCardFront"></div>
+                            <div class="flashcard-hint">点击翻转查看答案</div>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <div class="flashcard-label">答案</div>
+                            <div class="flashcard-content" id="quizCardBack"></div>
+                            <div class="flashcard-hint">翻转后请自评</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quiz self-assessment buttons (shown after flip) -->
+                <div class="quiz-actions" id="quizActions" style="display:none;">
+                    <button class="btn btn-success" id="quizCorrectBtn">✓ 正确</button>
+                    <button class="btn btn-danger" id="quizIncorrectBtn">✗ 错误</button>
+                </div>
+                <div class="quiz-flip-hint" id="quizFlipHint">
+                    <p>点击卡片翻转查看答案，然后自评</p>
+                </div>
+                <p class="keyboard-hint">快捷键：空格 翻转，1 正确，2 错误，Esc 退出</p>
+            </div>
+        </main>
+
+        <!-- View: Quiz Result -->
+        <main id="quizResultView" class="view">
+            <div class="quiz-result">
+                <div class="result-header">
+                    <div class="result-icon">🎉</div>
+                    <h2>测验完成！</h2>
+                </div>
+                <div class="result-score">
+                    <div class="score-circle" id="scoreCircle">
+                        <span class="score-number" id="scoreNumber">0</span>
+                        <span class="score-total" id="scoreTotal">/ 0</span>
+                    </div>
+                    <p class="score-percent" id="scorePercent">正确率 0%</p>
+                </div>
+                <div class="result-actions">
+                    <button class="btn btn-primary" id="retryQuizBtn">再测一次</button>
+                    <button class="btn btn-secondary" id="backToDeckFromQuizBtn">返回卡组</button>
+                </div>
+                <!-- Wrong answers list -->
+                <div id="wrongAnswersSection" style="display:none;">
+                    <h3 class="wrong-answers-title">答错的卡片</h3>
+                    <div id="wrongAnswersList" class="wrong-answers-list"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal: Create/Edit Deck -->
+    <div class="modal-overlay" id="deckModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="deckModalTitle">新建卡组</h3>
+                <button class="modal-close" id="closeDeckModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="deckNameInput">卡组名称 <span class="required">*</span></label>
+                    <input type="text" id="deckNameInput" placeholder="例如：英语词汇" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="deckDescInput">描述</label>
+                    <textarea id="deckDescInput" placeholder="卡组描述（可选）" rows="3" maxlength="200"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="cancelDeckModal">取消</button>
+                <button class="btn btn-primary" id="saveDeckBtn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Create/Edit Card -->
+    <div class="modal-overlay" id="cardModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="cardModalTitle">添加闪卡</h3>
+                <button class="modal-close" id="closeCardModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="cardFrontInput">正面（问题） <span class="required">*</span></label>
+                    <textarea id="cardFrontInput" placeholder="输入问题" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="cardBackInput">背面（答案） <span class="required">*</span></label>
+                    <textarea id="cardBackInput" placeholder="输入答案" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="cancelCardModal">取消</button>
+                <button class="btn btn-primary" id="saveCardBtn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Confirm Delete -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h3>确认删除</h3>
+                <button class="modal-close" id="closeConfirmModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">确定要删除吗？此操作不可撤销。</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="cancelConfirmBtn">取消</button>
+                <button class="btn btn-danger" id="confirmDeleteBtn">删除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file input for import -->
+    <input type="file" id="importFileInput" accept=".json" style="display:none;">
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
