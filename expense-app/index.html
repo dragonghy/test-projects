@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker - 个人记账</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>💰 个人记账</h1>
+    <button class="btn btn-theme" id="theme-toggle" title="切换主题">🌙</button>
+  </header>
+
+  <main class="app-main">
+    <!-- 左侧面板 -->
+    <section class="left-panel">
+      <!-- 添加/编辑表单 -->
+      <div class="card form-card">
+        <h2 id="form-title">添加支出</h2>
+        <form id="expense-form">
+          <input type="hidden" id="expense-id">
+          <div class="form-group">
+            <label for="amount">金额 <span class="required">*</span></label>
+            <input type="number" id="amount" placeholder="请输入金额" step="0.01" min="0.01" required>
+            <span class="error-msg" id="amount-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="category">分类 <span class="required">*</span></label>
+            <select id="category" required>
+              <option value="">请选择分类</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">日期 <span class="required">*</span></label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="form-group">
+            <label for="note">备注</label>
+            <input type="text" id="note" placeholder="选填备注">
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submit-btn">保存</button>
+            <button type="button" class="btn btn-secondary" id="cancel-btn" style="display:none;">取消</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- 仪表盘概览 -->
+      <div class="card dashboard-card">
+        <h2>当月概览</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-label">总支出</span>
+            <span class="stat-value" id="total-expense">¥0.00</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">笔数</span>
+            <span class="stat-value" id="total-count">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">日均支出</span>
+            <span class="stat-value" id="daily-avg">¥0.00</span>
+          </div>
+        </div>
+        <!-- 预算进度条 -->
+        <div class="budget-section" id="budget-section">
+          <div class="budget-header">
+            <span class="budget-label">月度预算</span>
+            <button class="btn btn-sm" id="budget-set-btn">设置</button>
+          </div>
+          <div class="budget-bar-wrap" id="budget-bar-wrap" style="display:none;">
+            <div class="budget-bar">
+              <div class="budget-bar-fill" id="budget-bar-fill"></div>
+            </div>
+            <span class="budget-text" id="budget-text"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 分类饼图 -->
+      <div class="card chart-card">
+        <h2>分类占比</h2>
+        <div class="chart-container" id="pie-chart-container">
+          <canvas id="pie-chart" width="300" height="300"></canvas>
+          <div class="chart-tooltip" id="pie-tooltip" style="display:none;"></div>
+        </div>
+      </div>
+
+      <!-- 月度趋势柱状图 -->
+      <div class="card chart-card">
+        <h2>近6月趋势</h2>
+        <div class="chart-container">
+          <canvas id="bar-chart" width="340" height="200"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- 右侧面板 -->
+    <section class="right-panel">
+      <!-- 月份筛选 -->
+      <div class="card month-nav-card">
+        <button class="btn btn-icon" id="prev-month" aria-label="上一月">&lt;</button>
+        <span class="month-display" id="current-month"></span>
+        <button class="btn btn-icon" id="next-month" aria-label="下一月">&gt;</button>
+      </div>
+
+      <!-- 搜索和工具栏 -->
+      <div class="card toolbar-card">
+        <input type="text" class="search-input" id="search-input" placeholder="搜索备注...">
+        <div class="toolbar-actions">
+          <button class="btn btn-sm" id="export-csv-btn" title="导出 CSV">导出</button>
+          <label class="btn btn-sm import-label" title="导入 CSV">
+            导入
+            <input type="file" id="import-csv-input" accept=".csv" style="display:none;">
+          </label>
+        </div>
+      </div>
+
+      <!-- 支出列表 -->
+      <div class="card list-card">
+        <h2>支出记录</h2>
+        <div id="expense-list" class="expense-list">
+          <!-- Dynamic content -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 删除确认弹窗 -->
+  <div class="modal-overlay" id="delete-modal" style="display:none;">
+    <div class="modal">
+      <p>确定要删除这条记录吗？</p>
+      <div class="modal-actions">
+        <button class="btn btn-danger" id="confirm-delete">确定删除</button>
+        <button class="btn btn-secondary" id="cancel-delete">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 预算设置弹窗 -->
+  <div class="modal-overlay" id="budget-modal" style="display:none;">
+    <div class="modal">
+      <h3>设置月度预算</h3>
+      <div class="form-group" style="margin-top:16px;">
+        <input type="number" id="budget-input" placeholder="每月预算金额" step="1" min="0">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="budget-save-btn">保存</button>
+        <button class="btn btn-secondary" id="budget-cancel-btn">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CSV 导入预览弹窗 -->
+  <div class="modal-overlay" id="import-modal" style="display:none;">
+    <div class="modal modal-wide">
+      <h3>导入预览</h3>
+      <div class="import-preview" id="import-preview"></div>
+      <p class="import-count" id="import-count"></p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="import-confirm-btn">确认导入</button>
+        <button class="btn btn-secondary" id="import-cancel-btn">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
