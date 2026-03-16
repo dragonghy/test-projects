@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="切换主题">
+      <span id="theme-icon">☀️</span>
+    </button>
+
+    <!-- 主页 -->
+    <div id="page-home" class="page active">
+      <div class="card home-card">
+        <h1 class="app-title">Quiz Builder</h1>
+        <p class="app-subtitle">轻松创建和分享互动测验</p>
+        <div class="home-buttons">
+          <button class="btn btn-primary" onclick="navigateTo('create')">创建测验</button>
+          <button class="btn btn-secondary" onclick="navigateTo('import')">开始答题</button>
+          <button class="btn btn-secondary" onclick="navigateTo('history')">答题历史</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 创建模式 -->
+    <div id="page-create" class="page">
+      <div class="card">
+        <div class="page-header">
+          <button class="btn-back" onclick="navigateTo('home')">← 返回</button>
+          <h2>创建测验</h2>
+        </div>
+        <div class="form-group">
+          <label for="quiz-title">测验标题</label>
+          <input type="text" id="quiz-title" placeholder="请输入测验标题" oninput="saveDraft()">
+        </div>
+        <div class="form-group">
+          <label for="quiz-time-limit">每题时间限制</label>
+          <select id="quiz-time-limit" onchange="saveDraft()">
+            <option value="0">不限时</option>
+            <option value="10">10 秒</option>
+            <option value="20">20 秒</option>
+            <option value="30">30 秒</option>
+          </select>
+        </div>
+        <div id="questions-container"></div>
+        <p class="question-count" id="question-count">已添加 0 道题</p>
+        <button class="btn btn-outline" id="btn-add-question" onclick="addQuestion()">+ 添加题目</button>
+        <div class="create-actions">
+          <button class="btn btn-primary" id="btn-export" onclick="exportQuiz()">导出 JSON</button>
+          <button class="btn btn-danger-text" onclick="clearDraft()">清空草稿</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 导入页面 -->
+    <div id="page-import" class="page">
+      <div class="card">
+        <div class="page-header">
+          <button class="btn-back" onclick="navigateTo('home')">← 返回</button>
+          <h2>开始答题</h2>
+        </div>
+        <p class="import-desc">导入一个测验文件或使用内置示例</p>
+        <div class="import-actions">
+          <label class="btn btn-primary" for="file-input">导入 JSON</label>
+          <input type="file" id="file-input" accept=".json" onchange="importQuiz(event)" hidden>
+          <button class="btn btn-secondary" onclick="loadSampleQuiz()">使用示例测验</button>
+        </div>
+        <p class="error-msg" id="import-error"></p>
+      </div>
+    </div>
+
+    <!-- 答题模式 -->
+    <div id="page-quiz" class="page">
+      <div class="card">
+        <!-- Progress Bar (F11) -->
+        <div class="progress-bar-container" id="progress-bar-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="quiz-header">
+          <p class="quiz-title" id="quiz-playing-title"></p>
+          <p class="quiz-progress" id="quiz-progress"></p>
+        </div>
+        <!-- Timer Bar (F10) -->
+        <div class="timer-container" id="timer-container" style="display:none;">
+          <div class="timer-bar" id="timer-bar"></div>
+          <span class="timer-text" id="timer-text"></span>
+        </div>
+        <!-- Timeout Overlay (F10) -->
+        <div class="timeout-overlay" id="timeout-overlay" style="display:none;">
+          <span>时间到！</span>
+        </div>
+        <!-- Keyboard Hint (F15) -->
+        <div class="keyboard-hint" id="keyboard-hint" style="display:none;">
+          <p>快捷键：按 <kbd>1</kbd>-<kbd>4</kbd> 选择选项，<kbd>Esc</kbd> 返回主页</p>
+        </div>
+        <div id="quiz-question-container">
+          <h3 class="question-text" id="quiz-question-text"></h3>
+          <div class="options-list" id="quiz-options"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 结果页面 -->
+    <div id="page-result" class="page">
+      <div class="card">
+        <div class="result-summary">
+          <h2>答题结果</h2>
+          <div class="grade-display" id="grade-display"></div>
+          <div class="score-display">
+            <span class="score-number" id="result-score"></span>
+            <span class="score-total" id="result-total"></span>
+          </div>
+          <p class="score-percentage" id="result-percentage"></p>
+        </div>
+        <div class="result-details" id="result-details"></div>
+        <div class="result-actions">
+          <button class="btn btn-primary" onclick="restartQuiz()">重新答题</button>
+          <button class="btn btn-secondary" onclick="navigateTo('home')">返回主页</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 答题历史页面 (F14) -->
+    <div id="page-history" class="page">
+      <div class="card">
+        <div class="page-header">
+          <button class="btn-back" onclick="navigateTo('home')">← 返回</button>
+          <h2>答题历史</h2>
+        </div>
+        <div id="history-list"></div>
+        <p class="empty-hint" id="history-empty" style="display:none;">暂无答题记录</p>
+      </div>
+    </div>
+
+    <!-- 历史详情页面 (F14) -->
+    <div id="page-history-detail" class="page">
+      <div class="card">
+        <div class="page-header">
+          <button class="btn-back" onclick="navigateTo('history')">← 返回</button>
+          <h2 id="history-detail-title">答题详情</h2>
+        </div>
+        <div class="result-summary" id="history-detail-summary"></div>
+        <div class="result-details" id="history-detail-details"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
