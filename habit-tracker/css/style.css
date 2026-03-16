@@ -1,0 +1,655 @@
+/* === Reset & Base === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface-hover: #1c2129;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --danger: #f85149;
+  --success: #3fb950;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* === Layout === */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* === Header === */
+.header {
+  padding: 24px 0 8px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.header .date {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+/* === Nav Tabs === */
+.nav-tabs {
+  display: flex;
+  gap: 0;
+  margin-top: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-tab {
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.nav-tab:hover {
+  color: var(--text);
+}
+
+.nav-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* === Add Button === */
+.add-habit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  margin: 16px 0;
+  background: var(--surface);
+  color: var(--accent);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.add-habit-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--accent);
+}
+
+/* === Empty State === */
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--text-muted);
+}
+
+.empty-state .icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-size: 0.9375rem;
+}
+
+/* === Habit List === */
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 32px;
+}
+
+/* === Habit Card === */
+.habit-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.habit-card:hover {
+  background: var(--surface-hover);
+}
+
+.habit-card.checked {
+  border-left: 3px solid var(--habit-color, var(--success));
+}
+
+/* Check-in button */
+.checkin-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.checkin-btn:hover {
+  border-color: var(--habit-color, var(--success));
+}
+
+.checkin-btn.done {
+  background: var(--habit-color, var(--success));
+  border-color: var(--habit-color, var(--success));
+  color: #fff;
+}
+
+.check-icon {
+  line-height: 1;
+}
+
+/* Habit info */
+.habit-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.habit-name {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.habit-color-dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Action buttons */
+.habit-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.habit-card:hover .habit-actions {
+  opacity: 1;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 6px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s;
+}
+
+.edit-btn:hover {
+  color: var(--accent);
+  background: rgba(88, 166, 255, 0.1);
+}
+
+.delete-btn:hover {
+  color: var(--danger);
+  background: rgba(248, 81, 73, 0.1);
+}
+
+/* === Modal (shared) === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow);
+}
+
+.modal h2 {
+  font-size: 1.125rem;
+  margin-bottom: 16px;
+}
+
+/* === Form === */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-group input[type="text"]:focus {
+  border-color: var(--accent);
+}
+
+.form-group input[type="color"] {
+  width: 48px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #4c9aed;
+}
+
+.btn-secondary {
+  background: var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  background: #3d444d;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #e04840;
+}
+
+/* === Delete Confirmation === */
+.delete-confirm-text {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  margin-bottom: 16px;
+}
+
+.delete-confirm-text strong {
+  color: var(--text);
+}
+
+/* === Clickable Habit Info === */
+.habit-info.clickable {
+  cursor: pointer;
+}
+
+.habit-info.clickable:hover .habit-name {
+  color: var(--accent);
+}
+
+/* === Back Button === */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  margin: 12px 0;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+}
+
+/* === Detail View === */
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.detail-color-dot {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.detail-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* === Stats Row === */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.stat-label {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* === Heatmap Section === */
+.heatmap-section {
+  margin-bottom: 32px;
+}
+
+.heatmap-section h3 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.heatmap-scroll {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.heatmap-container {
+  min-width: fit-content;
+}
+
+/* Month labels row */
+.heatmap-months {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 14px;
+  gap: 2px;
+  margin-bottom: 4px;
+  margin-left: 32px; /* align with grid (past day labels) */
+  height: 14px;
+}
+
+.heatmap-month-label {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  line-height: 14px;
+}
+
+/* Wrapper holds day labels + grid side by side */
+.heatmap-wrapper {
+  display: flex;
+  gap: 4px;
+}
+
+/* Day labels column */
+.heatmap-day-labels {
+  display: grid;
+  grid-template-rows: repeat(7, 14px);
+  gap: 2px;
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.heatmap-day-labels span {
+  font-size: 0.5625rem;
+  color: var(--text-muted);
+  line-height: 14px;
+  text-align: right;
+}
+
+/* Heatmap grid: 7 rows (days), auto columns (weeks) */
+.heatmap-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 14px);
+  grid-auto-flow: column;
+  grid-auto-columns: 14px;
+  gap: 2px;
+}
+
+.heatmap-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--surface);
+  transition: opacity 0.1s;
+}
+
+.heatmap-cell.checked {
+  opacity: 0.85;
+}
+
+.heatmap-cell.checked:hover {
+  opacity: 1;
+}
+
+.heatmap-cell.future {
+  background: transparent;
+}
+
+/* === Stats Dashboard === */
+.stats-dashboard {
+  padding-top: 8px;
+}
+
+.stats-aggregate {
+  margin-bottom: 8px;
+}
+
+.stats-aggregate .stats-row {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.section-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+/* Per-habit stats */
+.per-habit-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.habit-stat-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+
+.habit-stat-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.habit-stat-name {
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.habit-stat-values {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.habit-stat-item {
+  text-align: center;
+}
+
+.habit-stat-num {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.habit-stat-desc {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === Data Actions (Export/Import) === */
+.data-actions {
+  padding: 16px 0 32px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+
+.data-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.data-buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+}
+
+/* === Responsive === */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.25rem;
+  }
+
+  .habit-actions {
+    opacity: 1;
+  }
+
+  .habit-card {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-aggregate .stats-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stat-value {
+    font-size: 1.125rem;
+  }
+
+  .habit-stat-values {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+}

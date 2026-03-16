@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>Habit Tracker</h1>
+      <div class="date" id="today-date"></div>
+      <nav class="nav-tabs" id="nav-tabs">
+        <button class="nav-tab active" data-view="list">Habits</button>
+        <button class="nav-tab" data-view="stats">Stats</button>
+      </nav>
+    </header>
+
+    <!-- List View -->
+    <div id="list-view">
+      <!-- Add Habit Button -->
+      <button class="add-habit-btn" id="add-habit-btn">
+        <span>+</span> Add Habit
+      </button>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="empty-state" hidden>
+        <div class="icon">&#127793;</div>
+        <p>No habits yet. Add your first habit to get started!</p>
+      </div>
+
+      <!-- Habit List -->
+      <div class="habit-list" id="habit-list"></div>
+    </div>
+
+    <!-- Detail View -->
+    <div id="detail-view" hidden>
+      <button class="back-btn" id="back-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"/>
+        </svg>
+        Back to habits
+      </button>
+
+      <div class="detail-header">
+        <span class="detail-color-dot" id="detail-habit-color"></span>
+        <h2 class="detail-name" id="detail-habit-name"></h2>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-value" id="stat-current-streak">0</div>
+          <div class="stat-label">Current Streak</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-longest-streak">0</div>
+          <div class="stat-label">Longest Streak</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-completion-rate">0%</div>
+          <div class="stat-label">Completion</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-total-checkins">0</div>
+          <div class="stat-label">Total Days</div>
+        </div>
+      </div>
+
+      <!-- Heatmap -->
+      <div class="heatmap-section">
+        <h3>Activity</h3>
+        <div class="heatmap-scroll">
+          <div id="heatmap-container" class="heatmap-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats View -->
+    <div id="stats-view" hidden>
+      <div class="stats-dashboard">
+        <!-- Aggregate Stats -->
+        <div class="stats-aggregate">
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-value" id="agg-total-habits">0</div>
+              <div class="stat-label">Total Habits</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="agg-overall-rate">0%</div>
+              <div class="stat-label">Overall Rate</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="agg-best-streak">0</div>
+              <div class="stat-label">Best Streak</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Per-habit breakdown -->
+        <h3 class="section-title">Per-Habit Breakdown</h3>
+        <div id="per-habit-stats" class="per-habit-stats"></div>
+
+        <!-- Empty state for stats -->
+        <div id="stats-empty" class="empty-state" hidden>
+          <div class="icon">&#128202;</div>
+          <p>No habits to show stats for. Create some habits first!</p>
+        </div>
+      </div>
+
+      <!-- Footer: Export/Import -->
+      <div class="data-actions">
+        <h3 class="section-title">Data Management</h3>
+        <div class="data-buttons">
+          <button class="btn btn-secondary" id="export-btn">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M2.75 14A1.75 1.75 0 011 12.25v-2.5a.75.75 0 011.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25v-2.5a.75.75 0 011.5 0v2.5A1.75 1.75 0 0113.25 14H2.75z"/>
+              <path d="M7.25 7.689V2a.75.75 0 011.5 0v5.689l1.97-1.969a.75.75 0 111.06 1.06l-3.25 3.25a.75.75 0 01-1.06 0L4.22 6.78a.75.75 0 111.06-1.06l1.97 1.969z"/>
+            </svg>
+            Export JSON
+          </button>
+          <button class="btn btn-secondary" id="import-btn">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M2.75 14A1.75 1.75 0 011 12.25v-2.5a.75.75 0 011.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25v-2.5a.75.75 0 011.5 0v2.5A1.75 1.75 0 0113.25 14H2.75z"/>
+              <path d="M8.75 1.75a.75.75 0 00-1.5 0v5.689L5.28 5.47a.75.75 0 00-1.06 1.06l3.25 3.25a.75.75 0 001.06 0l3.25-3.25a.75.75 0 00-1.06-1.06L8.75 7.439V1.75z"/>
+            </svg>
+            Import JSON
+          </button>
+          <input type="file" id="import-file" accept=".json" hidden>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Habit Modal -->
+  <div class="modal-overlay" id="habit-modal" hidden>
+    <div class="modal">
+      <h2 id="modal-title">Add Habit</h2>
+      <form id="habit-form">
+        <div class="form-group">
+          <label for="habit-name">Habit Name</label>
+          <input type="text" id="habit-name" placeholder="e.g. Exercise, Read, Meditate" required>
+        </div>
+        <div class="form-group">
+          <label for="habit-color">Color</label>
+          <input type="color" id="habit-color" value="#4CAF50">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay" id="delete-confirm" hidden>
+    <div class="modal">
+      <h2>Delete Habit</h2>
+      <p class="delete-confirm-text">
+        Are you sure you want to delete <strong id="delete-habit-name"></strong>?
+        This will remove the habit and all its check-in data.
+      </p>
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" id="cancel-delete-btn">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirm-delete-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Confirmation Modal -->
+  <div class="modal-overlay" id="import-confirm" hidden>
+    <div class="modal">
+      <h2>Import Data</h2>
+      <p class="delete-confirm-text">
+        This will <strong>overwrite all existing data</strong> with the imported file.
+        Are you sure you want to continue?
+      </p>
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" id="cancel-import-btn">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirm-import-btn">Import</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/heatmap.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
