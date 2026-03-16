@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Notes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h1 class="logo">Markdown Notes</h1>
+        <input type="text" class="search-box" id="search-box" placeholder="搜索笔记...">
+        <div class="sidebar-actions">
+          <button class="btn-new" id="btn-new" title="新建笔记">+ 新建笔记</button>
+          <div class="import-export-btns">
+            <button class="btn-small" id="btn-import" title="导入 .md 文件">导入</button>
+            <button class="btn-small" id="btn-backup" title="备份所有笔记">备份</button>
+            <button class="btn-small" id="btn-restore" title="恢复笔记">恢复</button>
+          </div>
+        </div>
+      </div>
+      <div class="tag-filter" id="tag-filter"></div>
+      <ul class="note-list" id="note-list"></ul>
+      <input type="file" id="file-import" accept=".md" style="display:none">
+      <input type="file" id="file-restore" accept=".json" style="display:none">
+    </aside>
+
+    <!-- Editor -->
+    <main class="editor-pane" id="editor-pane">
+      <div class="toolbar" id="toolbar">
+        <button class="tool-btn" data-action="bold" title="加粗 (Ctrl+B)"><b>B</b></button>
+        <button class="tool-btn" data-action="italic" title="斜体 (Ctrl+I)"><i>I</i></button>
+        <span class="tool-sep"></span>
+        <button class="tool-btn" data-action="h1" title="一级标题">H1</button>
+        <button class="tool-btn" data-action="h2" title="二级标题">H2</button>
+        <button class="tool-btn" data-action="h3" title="三级标题">H3</button>
+        <span class="tool-sep"></span>
+        <button class="tool-btn" data-action="link" title="链接">链接</button>
+        <button class="tool-btn" data-action="code" title="代码">&lt;/&gt;</button>
+        <span class="tool-sep"></span>
+        <button class="tool-btn" data-action="ul" title="无序列表">&#8226; 列表</button>
+        <button class="tool-btn" data-action="ol" title="有序列表">1. 列表</button>
+        <span class="tool-sep"></span>
+        <button class="tool-btn" data-action="export" title="导出当前笔记为 .md">导出 .md</button>
+      </div>
+      <div class="tag-bar" id="tag-bar"></div>
+      <div class="editor-container">
+        <div class="line-numbers" id="line-numbers"></div>
+        <textarea class="editor" id="editor" placeholder="开始写 Markdown..."></textarea>
+      </div>
+      <div class="editor-status" id="editor-status">
+        <span class="word-count" id="word-count"></span>
+        <span class="save-status" id="save-status"></span>
+      </div>
+    </main>
+
+    <!-- Preview -->
+    <section class="preview-pane" id="preview-pane">
+      <div class="preview-content" id="preview-content"></div>
+    </section>
+
+    <!-- Mobile toggle buttons -->
+    <button class="mobile-toggle sidebar-toggle" id="sidebar-toggle" title="笔记列表">&#9776;</button>
+    <button class="mobile-toggle view-toggle" id="view-toggle" title="切换预览">预览</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
