@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Unit Converter</h1>
+    </header>
+
+    <nav class="categories" role="tablist" aria-label="Conversion categories">
+      <button class="category-btn active" role="tab" aria-selected="true" data-category="length" tabindex="0">Length</button>
+      <button class="category-btn" role="tab" aria-selected="false" data-category="weight" tabindex="-1">Weight</button>
+      <button class="category-btn" role="tab" aria-selected="false" data-category="temperature" tabindex="-1">Temp</button>
+      <button class="category-btn" role="tab" aria-selected="false" data-category="area" tabindex="-1">Area</button>
+      <button class="category-btn" role="tab" aria-selected="false" data-category="volume" tabindex="-1">Volume</button>
+      <button class="category-btn" role="tab" aria-selected="false" data-category="speed" tabindex="-1">Speed</button>
+      <button class="category-btn" role="tab" aria-selected="false" data-category="time" tabindex="-1">Time</button>
+      <button class="category-btn" role="tab" aria-selected="false" data-category="data" tabindex="-1">Data</button>
+    </nav>
+
+    <div class="converter" role="tabpanel" aria-label="Unit conversion panel">
+      <div class="search-box">
+        <label for="unit-search" class="sr-only">Search units</label>
+        <input type="text" id="unit-search" placeholder="Search units..." aria-label="Filter units by name">
+      </div>
+
+      <div class="unit-selectors">
+        <div class="unit-group">
+          <label for="from-unit">From</label>
+          <select id="from-unit" aria-label="Source unit"></select>
+        </div>
+        <button id="swap-btn" class="swap-btn" aria-label="Swap source and target units" title="Swap units">&harr;</button>
+        <div class="unit-group">
+          <label for="to-unit">To</label>
+          <select id="to-unit" aria-label="Target unit"></select>
+        </div>
+      </div>
+
+      <div class="conversion-area">
+        <div class="input-group">
+          <label for="input-value">Value</label>
+          <input type="number" id="input-value" placeholder="Enter value" aria-label="Value to convert" step="any">
+        </div>
+        <div class="result-group">
+          <label id="result-label">Result</label>
+          <div id="result" class="result" role="status" aria-live="polite" aria-atomic="true" aria-labelledby="result-label">0</div>
+        </div>
+      </div>
+
+      <div class="formula-row">
+        <div id="formula" class="formula" aria-live="polite"></div>
+        <button id="fav-btn" class="fav-btn" aria-label="Add to favorites" title="Add to favorites">&#9734;</button>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <button class="panel-toggle" id="fav-toggle" aria-expanded="false" aria-controls="fav-list">
+        <span class="panel-icon">&#9733;</span> Favorites
+        <span class="toggle-arrow" aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="panel-content" id="fav-list" role="list" aria-label="Favorite conversions" hidden>
+        <div class="panel-empty" id="fav-empty">No favorites yet. Click the star to save a conversion pair.</div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <button class="panel-toggle" id="history-toggle" aria-expanded="false" aria-controls="history-list">
+        <span class="panel-icon">&#128203;</span> History
+        <span class="toggle-arrow" aria-hidden="true">&#9662;</span>
+        <span class="clear-btn-wrapper">
+          <button id="clear-history" class="clear-btn" aria-label="Clear all history">Clear</button>
+        </span>
+      </button>
+      <div class="panel-content" id="history-list" role="list" aria-label="Conversion history" hidden>
+        <div class="panel-empty" id="history-empty">No conversions yet.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
