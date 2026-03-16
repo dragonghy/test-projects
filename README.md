@@ -15,3 +15,4 @@ Each project was built by a team of 3 agents (Product Manager + Developer + QA E
 | [kanban-board](./kanban-board/) | Web App | Interactive Kanban board with drag & drop, priority labels, search filter, undo (Ctrl+Z), and JSON export/import | [Try it](https://kanban-board-theta-pied.vercel.app) |
 | [music-viz](./music-viz/) | Web App | Audio visualizer with 4 modes (bars, wave, circle, particles), 3 color themes, sensitivity control, built-in demo, and screenshot | [Try it](https://music-viz-wheat.vercel.app) |
 | [flashcard](./flashcard/) | Web App | Flashcard study app with 3D flip animations, quiz mode, mastery tracking, search, shuffle, keyboard shortcuts, and JSON import/export | [Try it](https://flashcard-steel-two.vercel.app) |
+| [draw-app](./draw-app/) | Web App | Canvas drawing tool with brush, shapes, eraser, layers, flood fill, text, eyedropper, grid, zoom (25%-400%), keyboard shortcuts, and PNG export | [Try it](https://draw-app-omega.vercel.app) |
