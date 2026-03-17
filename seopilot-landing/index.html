@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEOPilot — AI-Powered SEO for Shopify</title>
+  <meta name="description" content="Stop guessing. Let AI find and fix your Shopify store's SEO issues in one click. Scan, fix, and grow your organic traffic with SEOPilot." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwindcss.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef7ff',
+              100: '#d9edff',
+              200: '#bce0ff',
+              300: '#8ecdff',
+              400: '#59b0ff',
+              500: '#338bff',
+              600: '#1a6af5',
+              700: '#1355e1',
+              800: '#1645b6',
+              900: '#183d8f',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    }
+    .glow {
+      box-shadow: 0 0 60px rgba(51, 139, 255, 0.15);
+    }
+    .card-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    .pricing-popular {
+      border: 2px solid #338bff;
+      position: relative;
+    }
+    .pricing-popular::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #338bff, #1355e1);
+      color: white;
+      padding: 4px 16px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    .score-ring {
+      transform: rotate(-90deg);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white font-sans antialiased">
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="gradient-bg relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="relative z-10 max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🚀</span>
+        <span class="text-xl font-bold">SEOPilot</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm text-slate-300">
+        <a href="#features" class="hover:text-white transition-colors">Features</a>
+        <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="#install" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2 rounded-lg font-medium transition-colors">Install Free</a>
+      </div>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden relative z-10 px-6 pb-4">
+      <div class="flex flex-col gap-4 text-sm text-slate-300">
+        <a href="#features" class="hover:text-white transition-colors">Features</a>
+        <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="#install" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2 rounded-lg font-medium transition-colors text-center">Install Free</a>
+      </div>
+    </div>
+
+    <!-- Hero content -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-brand-500/10 border border-brand-500/20 rounded-full px-4 py-1.5 mb-6 text-sm text-brand-300">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+          </span>
+          Now available on Shopify App Store
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6">
+          AI-Powered SEO for Shopify
+          <br />
+          <span class="bg-gradient-to-r from-brand-400 to-indigo-400 bg-clip-text text-transparent">Scan, Fix, Grow</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Stop guessing. Let AI find and fix your store's SEO issues in one click.
+          Boost organic traffic without learning SEO.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#install" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white px-8 py-3.5 rounded-xl font-semibold text-lg transition-colors shadow-lg shadow-brand-600/25">
+            Install Free on Shopify
+          </a>
+          <a href="#features" class="w-full sm:w-auto border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white px-8 py-3.5 rounded-xl font-medium text-lg transition-colors">
+            See How It Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero visual: SEO Score Dashboard mockup -->
+      <div class="mt-16 max-w-4xl mx-auto">
+        <div class="glow bg-slate-900/80 backdrop-blur border border-slate-800 rounded-2xl p-6 md:p-8 float-animation">
+          <div class="flex items-center gap-2 mb-6">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <span class="ml-3 text-sm text-slate-500">SEOPilot Dashboard</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Score -->
+            <div class="flex flex-col items-center justify-center p-6 bg-slate-800/50 rounded-xl">
+              <svg class="w-28 h-28 score-ring" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#1e293b" stroke-width="10" />
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#22c55e" stroke-width="10" stroke-dasharray="251.3" stroke-dashoffset="62.8" stroke-linecap="round" />
+              </svg>
+              <div class="mt-2 text-3xl font-bold text-green-400">75</div>
+              <div class="text-sm text-slate-400">SEO Health Score</div>
+            </div>
+            <!-- Issues Found -->
+            <div class="flex flex-col gap-3 p-6 bg-slate-800/50 rounded-xl">
+              <div class="text-sm font-medium text-slate-400">Issues Found</div>
+              <div class="flex items-center gap-3">
+                <span class="flex-shrink-0 w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center text-red-400 text-sm font-bold">5</span>
+                <span class="text-sm text-slate-300">Critical issues</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="flex-shrink-0 w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center text-yellow-400 text-sm font-bold">12</span>
+                <span class="text-sm text-slate-300">Warnings</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="flex-shrink-0 w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400 text-sm font-bold">83</span>
+                <span class="text-sm text-slate-300">Passed</span>
+              </div>
+            </div>
+            <!-- AI Fix -->
+            <div class="flex flex-col gap-3 p-6 bg-slate-800/50 rounded-xl">
+              <div class="text-sm font-medium text-slate-400">AI Auto-Fix</div>
+              <div class="bg-slate-900 rounded-lg p-3 border border-slate-700">
+                <div class="text-xs text-slate-500 mb-1">Original Title</div>
+                <div class="text-sm text-red-400 line-through">Blue T-Shirt</div>
+              </div>
+              <div class="bg-slate-900 rounded-lg p-3 border border-green-500/30">
+                <div class="text-xs text-slate-500 mb-1">AI Optimized</div>
+                <div class="text-sm text-green-400">Premium Blue Cotton T-Shirt | Soft &amp; Breathable | Shop Now</div>
+              </div>
+              <button class="mt-1 bg-green-600 hover:bg-green-700 text-white text-sm py-2 rounded-lg font-medium transition-colors">
+                ✨ Apply Fix
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURES SECTION ==================== -->
+  <section id="features" class="py-20 md:py-28 bg-slate-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Everything you need to
+          <span class="bg-gradient-to-r from-brand-400 to-indigo-400 bg-clip-text text-transparent">dominate SEO</span>
+        </h2>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          No SEO knowledge required. SEOPilot handles the hard work so you can focus on growing your business.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Feature 1 -->
+        <div class="card-hover bg-slate-900/50 border border-slate-800 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center text-2xl mb-5">
+            🔍
+          </div>
+          <h3 class="text-xl font-semibold mb-3">One-Click SEO Scan</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Analyze your entire store in seconds. SEOPilot checks 6 critical SEO rules across all products,
+            collections, and pages — from meta titles to alt text.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="card-hover bg-slate-900/50 border border-slate-800 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-2xl mb-5">
+            🤖
+          </div>
+          <h3 class="text-xl font-semibold mb-3">AI Auto-Fix</h3>
+          <p class="text-slate-400 leading-relaxed">
+            GPT-powered suggestions for meta tags, descriptions, and alt text. One click to review,
+            one click to apply. Fix SEO issues faster than ever.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="card-hover bg-slate-900/50 border border-slate-800 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-2xl mb-5">
+            📊
+          </div>
+          <h3 class="text-xl font-semibold mb-3">SEO Health Score</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Get a clear 0–100 score for your entire store's SEO health. Track your progress over time
+            with actionable insights and prioritized recommendations.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="card-hover bg-slate-900/50 border border-slate-800 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-2xl mb-5">
+            ⚡
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Batch Operations</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Fix hundreds of products at once. Batch-generate meta titles, descriptions, and image alt text
+            powered by AI — saving you hours of manual work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SOCIAL PROOF SECTION ==================== -->
+  <section class="py-16 bg-slate-900/30 border-y border-slate-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-3xl md:text-4xl font-bold text-white mb-1">6</div>
+          <div class="text-sm text-slate-400">SEO rules checked</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-bold text-white mb-1">&lt; 2s</div>
+          <div class="text-sm text-slate-400">AI fix generation</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-bold text-white mb-1">3</div>
+          <div class="text-sm text-slate-400">Content types scanned</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-bold text-white mb-1">1-Click</div>
+          <div class="text-sm text-slate-400">To fix any issue</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section class="py-20 md:py-28 bg-slate-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">How it works</h2>
+        <p class="text-slate-400 text-lg">Three simple steps to better SEO</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-500/10 border-2 border-brand-500/30 rounded-2xl flex items-center justify-center text-2xl font-bold text-brand-400 mx-auto mb-5">
+            1
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Install & Scan</h3>
+          <p class="text-slate-400">Install SEOPilot from the Shopify App Store and run a full-store SEO scan with one click.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-500/10 border-2 border-green-500/30 rounded-2xl flex items-center justify-center text-2xl font-bold text-green-400 mx-auto mb-5">
+            2
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Review AI Fixes</h3>
+          <p class="text-slate-400">SEOPilot's AI generates optimized meta titles, descriptions, and alt text for every issue found.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="text-center">
+          <div class="w-16 h-16 bg-purple-500/10 border-2 border-purple-500/30 rounded-2xl flex items-center justify-center text-2xl font-bold text-purple-400 mx-auto mb-5">
+            3
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Apply & Grow</h3>
+          <p class="text-slate-400">Apply fixes with one click. Watch your SEO score improve and organic traffic grow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRICING SECTION ==================== -->
+  <section id="pricing" class="py-20 md:py-28 bg-slate-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, transparent pricing</h2>
+        <p class="text-slate-400 text-lg">Start free. Upgrade as you grow.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <!-- Free -->
+        <div class="card-hover bg-slate-900/50 border border-slate-800 rounded-2xl p-8 flex flex-col">
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold text-slate-300 mb-1">Free</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-bold">$0</span>
+              <span class="text-slate-500">/month</span>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm mb-6">Perfect for getting started with SEO optimization.</p>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Up to 50 products scanned
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              10 AI fixes per month
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              SEO health dashboard
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              6 SEO rules checked
+            </li>
+          </ul>
+          <a href="#install" class="block text-center border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white py-3 rounded-xl font-medium transition-colors">
+            Get Started Free
+          </a>
+        </div>
+
+        <!-- Pro (Popular) -->
+        <div class="card-hover pricing-popular bg-slate-900/80 rounded-2xl p-8 flex flex-col">
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold text-brand-300 mb-1">Pro</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-bold">$19</span>
+              <span class="text-slate-500">/month</span>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm mb-6">For growing stores that want maximum SEO impact.</p>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Unlimited product scans
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              100 AI fixes per month
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Batch operations
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Collections + pages scan
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Fix history tracking
+            </li>
+          </ul>
+          <a href="#install" class="block text-center bg-brand-600 hover:bg-brand-700 text-white py-3 rounded-xl font-semibold transition-colors shadow-lg shadow-brand-600/25">
+            Start Pro Trial
+          </a>
+        </div>
+
+        <!-- Business -->
+        <div class="card-hover bg-slate-900/50 border border-slate-800 rounded-2xl p-8 flex flex-col">
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold text-slate-300 mb-1">Business</h3>
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-bold">$39</span>
+              <span class="text-slate-500">/month</span>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm mb-6">For power users and agencies managing multiple stores.</p>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Everything in Pro
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Unlimited AI fixes
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Custom brand tone for AI
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Priority support
+            </li>
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Export reports
+            </li>
+          </ul>
+          <a href="#install" class="block text-center border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white py-3 rounded-xl font-medium transition-colors">
+            Start Business Trial
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA SECTION ==================== -->
+  <section id="install" class="py-20 md:py-28 gradient-bg relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-500/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Ready to boost your store's SEO?
+      </h2>
+      <p class="text-slate-400 text-lg mb-8 max-w-xl mx-auto">
+        Join thousands of Shopify merchants using AI to improve their search rankings. Get started in under 60 seconds.
+      </p>
+      <a href="#" class="inline-block bg-brand-600 hover:bg-brand-700 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-colors shadow-lg shadow-brand-600/25">
+        Install Free on Shopify
+      </a>
+      <p class="mt-4 text-sm text-slate-500">Free plan available. No credit card required.</p>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slate-950 border-t border-slate-800 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🚀</span>
+          <span class="font-bold">SEOPilot</span>
+          <span class="text-slate-500 text-sm ml-2">by Shopify Merchants, for Shopify Merchants</span>
+        </div>
+        <div class="flex items-center gap-6 text-sm text-slate-400">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Support</a>
+          <a href="#" class="hover:text-white transition-colors">SEOPilot Lite (Chrome Extension)</a>
+        </div>
+      </div>
+      <div class="mt-8 text-center text-sm text-slate-600">
+        Made with ❤️ for Shopify merchants
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile menu toggle -->
+  <script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
