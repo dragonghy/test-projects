@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Gradient Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>CSS Gradient Generator</h1>
+      <div class="header-actions">
+        <button id="undo-btn" class="icon-btn" title="Undo (Ctrl+Z)" disabled>&#x21A9;</button>
+        <button id="redo-btn" class="icon-btn" title="Redo (Ctrl+Shift+Z)" disabled>&#x21AA;</button>
+        <button id="fullscreen-btn" class="icon-btn" title="Fullscreen Preview">&#x26F6;</button>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <div class="preview-section">
+        <div id="gradient-preview"></div>
+      </div>
+
+      <div class="controls-section">
+        <div class="control-group">
+          <h3>Gradient Type</h3>
+          <div class="type-switch">
+            <button class="type-btn active" data-type="linear">Linear</button>
+            <button class="type-btn" data-type="radial">Radial</button>
+          </div>
+          <div id="linear-controls">
+            <div class="angle-controls-row">
+              <div class="direction-wheel-wrap">
+                <div id="direction-wheel" class="direction-wheel">
+                  <div id="wheel-pointer" class="wheel-pointer"></div>
+                </div>
+              </div>
+              <div class="angle-slider-wrap">
+                <div class="angle-row">
+                  <input type="range" id="angle-input" min="0" max="360" value="90">
+                  <span id="angle-value">90&deg;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="radial-controls" style="display:none">
+            <select id="radial-position">
+              <option value="center">Center</option>
+              <option value="top left">Top Left</option>
+              <option value="top">Top</option>
+              <option value="top right">Top Right</option>
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+              <option value="bottom left">Bottom Left</option>
+              <option value="bottom">Bottom</option>
+              <option value="bottom right">Bottom Right</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h3>Color Stops</h3>
+          <div id="color-stops"></div>
+          <button id="add-stop-btn">+ Add Color Stop</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-section">
+      <h3>CSS Code</h3>
+      <div class="code-row">
+        <div id="css-output"></div>
+        <button id="copy-btn">Copy</button>
+      </div>
+    </div>
+
+    <div class="control-group preset-section">
+      <h3>Presets</h3>
+      <div id="preset-grid" class="preset-grid"></div>
+    </div>
+  </div>
+
+  <!-- Fullscreen overlay -->
+  <div id="fullscreen-overlay" class="fullscreen-overlay">
+    <button id="fullscreen-close" class="fullscreen-close">&times;</button>
+  </div>
+
+  <script src="js/gradient.js"></script>
+  <script src="js/presets.js"></script>
+  <script src="js/colorstops.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

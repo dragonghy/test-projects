@@ -1,0 +1,519 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ── Header ── */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #444;
+  background: #16213e;
+  color: #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.icon-btn:hover:not(:disabled) {
+  border-color: #6366f1;
+  color: #fff;
+}
+
+.icon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ── Main Layout ── */
+.main-layout {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Preview */
+.preview-section {
+  flex: 1;
+  min-width: 0;
+}
+
+#gradient-preview {
+  width: 100%;
+  min-height: 350px;
+  height: 100%;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+/* Controls */
+.controls-section {
+  width: 340px;
+  flex-shrink: 0;
+}
+
+.control-group {
+  background: #16213e;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.control-group h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+/* ── Type Switch ── */
+.type-switch {
+  display: flex;
+  gap: 8px;
+}
+
+.type-btn {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid #333;
+  background: transparent;
+  color: #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.15s;
+}
+
+.type-btn:hover {
+  border-color: #6366f1;
+  color: #fff;
+}
+
+.type-btn.active {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: #fff;
+}
+
+/* ── Angle / Direction Wheel ── */
+#linear-controls, #radial-controls {
+  margin-top: 12px;
+}
+
+.angle-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.direction-wheel-wrap {
+  flex-shrink: 0;
+}
+
+.direction-wheel {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid #444;
+  background: #1a1a2e;
+  position: relative;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.direction-wheel::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #666;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 2px;
+  height: 28px;
+  background: #6366f1;
+  transform-origin: bottom center;
+  transform: rotate(90deg);
+  margin-left: -1px;
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.wheel-pointer::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  background: #6366f1;
+  border-radius: 50%;
+}
+
+.angle-slider-wrap {
+  flex: 1;
+}
+
+.angle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.angle-row input[type="range"] {
+  flex: 1;
+}
+
+#angle-value {
+  min-width: 40px;
+  text-align: right;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+/* ── Radial Position ── */
+#radial-position {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+}
+
+/* ── Color Stops ── */
+.stop-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.stop-color {
+  width: 40px;
+  height: 34px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+}
+
+.stop-color::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+
+.stop-color::-webkit-color-swatch {
+  border-radius: 4px;
+  border: 1px solid #444;
+}
+
+.stop-position {
+  flex: 1;
+  accent-color: #6366f1;
+}
+
+.stop-pos-value {
+  min-width: 40px;
+  text-align: right;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.stop-delete {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #444;
+  background: transparent;
+  color: #9ca3af;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.stop-delete:hover:not(:disabled) {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.stop-delete:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+#add-stop-btn {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px dashed #444;
+  background: transparent;
+  color: #9ca3af;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.15s;
+}
+
+#add-stop-btn:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+}
+
+/* ── Code Output ── */
+.code-section {
+  background: #16213e;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.code-section h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+.code-row {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
+#css-output {
+  flex: 1;
+  background: #0f0f23;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.9rem;
+  color: #a5f3fc;
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+#copy-btn {
+  padding: 12px 24px;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+#copy-btn:hover {
+  background: #4f46e5;
+}
+
+#copy-btn.copied {
+  background: #22c55e;
+}
+
+/* ── Preset Gallery ── */
+.preset-section {
+  margin-bottom: 16px;
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+}
+
+.preset-item {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.preset-item:hover {
+  border-color: #6366f1;
+  transform: scale(1.05);
+}
+
+.preset-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #e0e0e0;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+/* ── Fullscreen Overlay ── */
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: none;
+}
+
+.fullscreen-overlay.active {
+  display: block;
+}
+
+.fullscreen-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.fullscreen-close:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* ── Range Input Styling ── */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #333;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6366f1;
+  cursor: pointer;
+}
+
+/* ── Responsive Design ── */
+
+/* Tablet and below: stack layout */
+@media (max-width: 1023px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .controls-section {
+    width: 100%;
+  }
+
+  #gradient-preview {
+    min-height: 250px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .app {
+    padding: 16px;
+  }
+
+  .app-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  #gradient-preview {
+    min-height: 200px;
+  }
+
+  .angle-controls-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .direction-wheel-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .code-row {
+    flex-direction: column;
+  }
+
+  #copy-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .preset-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  }
+}
