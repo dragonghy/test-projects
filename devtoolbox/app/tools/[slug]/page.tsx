@@ -8,11 +8,9 @@ interface Props {
   params: { slug: string };
 }
 
-// Only generate static pages for tools that don't have dedicated route folders
-const IMPLEMENTED_SLUGS = new Set([
-  "json-formatter", "base64", "uuid-generator", "color-picker",
-  "password-generator", "regex-tester", "word-counter",
-]);
+// All 15 tools now have dedicated route folders.
+// This catch-all serves as a fallback for any future tools not yet implemented.
+const IMPLEMENTED_SLUGS = new Set(tools.map((t) => t.slug));
 
 export async function generateStaticParams() {
   return tools

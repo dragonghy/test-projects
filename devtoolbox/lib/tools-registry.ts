@@ -45,7 +45,7 @@ export const tools: Tool[] = [
     metaTitle: "JSON to CSV / CSV to JSON Converter Online — Free | DevToolBox",
     metaDescription:
       "Convert JSON to CSV or CSV to JSON online for free. Supports custom delimiters and nested data flattening.",
-    ready: false,
+    ready: true,
   },
   {
     name: "XML Formatter",
@@ -59,7 +59,7 @@ export const tools: Tool[] = [
     metaTitle: "XML Formatter & Validator Online — Free | DevToolBox",
     metaDescription:
       "Format, validate, and minify XML online for free. Instant beautification with error detection.",
-    ready: false,
+    ready: true,
   },
   {
     name: "YAML ↔ JSON",
@@ -73,7 +73,7 @@ export const tools: Tool[] = [
     metaTitle: "YAML to JSON / JSON to YAML Converter Online — Free | DevToolBox",
     metaDescription:
       "Convert YAML to JSON or JSON to YAML online for free. Perfect for config files and API development.",
-    ready: false,
+    ready: true,
   },
   {
     name: "Base64 Encode/Decode",
@@ -117,7 +117,7 @@ export const tools: Tool[] = [
     metaTitle: "Diff Checker — Compare Text Online Free | DevToolBox",
     metaDescription:
       "Compare two texts side-by-side and highlight differences online for free. Perfect for code reviews.",
-    ready: false,
+    ready: true,
   },
   {
     name: "Markdown Preview",
@@ -131,7 +131,7 @@ export const tools: Tool[] = [
     metaTitle: "Markdown Preview — Live Editor Online Free | DevToolBox",
     metaDescription:
       "Write Markdown and preview rendered output in real-time. Supports GitHub Flavored Markdown. Free online editor.",
-    ready: false,
+    ready: true,
   },
   {
     name: "Lorem Ipsum Generator",
@@ -145,7 +145,7 @@ export const tools: Tool[] = [
     metaTitle: "Lorem Ipsum Generator — Placeholder Text Online | DevToolBox",
     metaDescription:
       "Generate Lorem Ipsum placeholder text by paragraphs, sentences, or words. One-click copy, free online.",
-    ready: false,
+    ready: true,
   },
   {
     name: "Word Counter",
@@ -203,7 +203,7 @@ export const tools: Tool[] = [
     metaTitle: "QR Code Generator Online — Free PNG & SVG | DevToolBox",
     metaDescription:
       "Generate QR codes online for free. Supports text, URLs, email. Download as PNG or SVG.",
-    ready: false,
+    ready: true,
   },
   {
     name: "Color Picker",
@@ -231,7 +231,7 @@ export const tools: Tool[] = [
     metaTitle: "CSS Gradient Generator — Visual Editor | Free | DevToolBox",
     metaDescription:
       "Create beautiful CSS gradients with a visual editor online for free. Copy generated CSS code instantly.",
-    ready: false,
+    ready: true,
   },
 ];
 
