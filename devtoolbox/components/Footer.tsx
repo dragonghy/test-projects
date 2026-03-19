@@ -15,7 +15,7 @@ export default function Footer() {
             Contact
           </a>
         </div>
-        <p>&copy; {new Date().getFullYear()} DevToolBox. Free developer tools, forever.</p>
+        <p>&copy; {new Date().getFullYear()} DevToolBox — Free developer tools, forever. Made with ❤️</p>
       </div>
     </footer>
   );

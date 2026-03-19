@@ -4,6 +4,9 @@ import { useState } from "react";
 import { tools, CATEGORIES, getToolsByCategory } from "@/lib/tools-registry";
 import ToolCard from "@/components/ToolCard";
 import SearchBar from "@/components/SearchBar";
+import { generateSiteJsonLd } from "@/lib/seo";
+
+const jsonLd = generateSiteJsonLd();
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -20,6 +23,8 @@ export default function Home() {
   const grouped = getToolsByCategory();
 
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
       {/* Hero */}
       <div className="text-center mb-10">
@@ -73,5 +78,6 @@ export default function Home() {
         </div>
       )}
     </div>
+    </>
   );
 }
