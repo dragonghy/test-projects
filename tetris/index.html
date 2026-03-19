@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="left-panel">
+      <div class="panel-box" id="hold-box">
+        <h3>HOLD</h3>
+        <canvas id="hold-canvas" width="100" height="100"></canvas>
+      </div>
+      <div class="panel-box" id="controls-box">
+        <h3>CONTROLS</h3>
+        <div class="control-hint">&larr;&rarr; Move</div>
+        <div class="control-hint">&uarr; Rotate</div>
+        <div class="control-hint">&darr; Soft Drop</div>
+        <div class="control-hint">Space Hard Drop</div>
+        <div class="control-hint">C Hold</div>
+        <div class="control-hint">P Pause</div>
+      </div>
+    </div>
+    <div id="center-panel">
+      <canvas id="game-canvas" width="300" height="600"></canvas>
+    </div>
+    <div id="right-panel">
+      <div class="panel-box" id="next-box">
+        <h3>NEXT</h3>
+        <canvas id="next-canvas" width="100" height="100"></canvas>
+      </div>
+      <div class="panel-box" id="score-box">
+        <h3>SCORE</h3>
+        <p id="score-value">0</p>
+        <h3>LEVEL</h3>
+        <p id="level-value">1</p>
+        <h3>LINES</h3>
+        <p id="lines-value">0</p>
+        <h3>HIGH SCORE</h3>
+        <p id="highscore-value">0</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlay">
+    <div id="overlay-content">
+      <h1 id="overlay-title">TETRIS</h1>
+      <p id="overlay-message"></p>
+      <button id="overlay-button">START</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
