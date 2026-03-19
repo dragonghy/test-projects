@@ -31,7 +31,7 @@ export const tools: Tool[] = [
     metaTitle: "JSON Formatter & Validator Online — Free | DevToolBox",
     metaDescription:
       "Format, validate, and minify JSON online for free. Instant formatting with syntax highlighting and error detection. No signup required.",
-    ready: false,
+    ready: true,
   },
   {
     name: "JSON ↔ CSV",
@@ -87,7 +87,7 @@ export const tools: Tool[] = [
     metaTitle: "Base64 Encode & Decode Online — Free | DevToolBox",
     metaDescription:
       "Encode or decode Base64 strings and files online for free. Supports text and binary data.",
-    ready: false,
+    ready: true,
   },
 
   // ===== Text & Code Tools =====
@@ -103,7 +103,7 @@ export const tools: Tool[] = [
     metaTitle: "Regex Tester & Debugger Online — Free | DevToolBox",
     metaDescription:
       "Test regex patterns online with real-time match highlighting. Supports all flags with group details. Free, no signup.",
-    ready: false,
+    ready: true,
   },
   {
     name: "Diff Checker",
@@ -159,7 +159,7 @@ export const tools: Tool[] = [
     metaTitle: "Word & Character Counter Online — Free | DevToolBox",
     metaDescription:
       "Count words, characters, sentences, and paragraphs online for free. Includes reading time estimate.",
-    ready: false,
+    ready: true,
   },
 
   // ===== Generator Tools =====
@@ -175,7 +175,7 @@ export const tools: Tool[] = [
     metaTitle: "UUID Generator Online — v4, v1, v7 | Free | DevToolBox",
     metaDescription:
       "Generate UUIDs online for free. Supports v4 (random), v1 (timestamp), v7 (sortable). Batch generate up to 100.",
-    ready: false,
+    ready: true,
   },
   {
     name: "Password Generator",
@@ -189,7 +189,7 @@ export const tools: Tool[] = [
     metaTitle: "Password Generator — Strong & Secure | Free | DevToolBox",
     metaDescription:
       "Generate strong, secure passwords online for free. Customizable length and characters with strength indicator.",
-    ready: false,
+    ready: true,
   },
   {
     name: "QR Code Generator",
@@ -217,7 +217,7 @@ export const tools: Tool[] = [
     metaTitle: "Color Picker & Converter — HEX/RGB/HSL | Free | DevToolBox",
     metaDescription:
       "Pick colors and convert between HEX, RGB, HSL online for free. Includes palette generator with color schemes.",
-    ready: false,
+    ready: true,
   },
   {
     name: "CSS Gradient Generator",

@@ -8,8 +8,16 @@ interface Props {
   params: { slug: string };
 }
 
+// Only generate static pages for tools that don't have dedicated route folders
+const IMPLEMENTED_SLUGS = new Set([
+  "json-formatter", "base64", "uuid-generator", "color-picker",
+  "password-generator", "regex-tester", "word-counter",
+]);
+
 export async function generateStaticParams() {
-  return tools.map((t) => ({ slug: t.slug }));
+  return tools
+    .filter((t) => !IMPLEMENTED_SLUGS.has(t.slug))
+    .map((t) => ({ slug: t.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
