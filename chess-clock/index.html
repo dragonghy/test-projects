@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Chess Clock</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0d0d1a;
+    color: #e8e8e8;
+    height: 100dvh;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ── Setup Screen ── */
+  #setup-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
+    padding: 20px;
+    gap: 20px;
+    overflow-y: auto;
+  }
+
+  #setup-screen h1 {
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .preset-group {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .preset-group h2 {
+    font-size: 0.85rem;
+    color: #6a6a8a;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .preset-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .preset-btn {
+    padding: 14px 22px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid #2a2a4a;
+    border-radius: 10px;
+    background: #141428;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 70px;
+    text-align: center;
+  }
+
+  .preset-btn:hover, .preset-btn:active {
+    background: #1e1e50;
+    border-color: #e94560;
+    color: #fff;
+  }
+
+  /* ── Custom Time Control ── */
+  .custom-section {
+    width: 100%;
+    max-width: 420px;
+    border: 2px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 16px;
+    background: #141428;
+  }
+
+  .custom-section h2 {
+    font-size: 0.85rem;
+    color: #6a6a8a;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .custom-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .custom-row label {
+    font-size: 0.9rem;
+    color: #999;
+    min-width: 90px;
+  }
+
+  .custom-row input {
+    width: 80px;
+    padding: 10px 12px;
+    font-size: 1.1rem;
+    border: 2px solid #2a2a4a;
+    border-radius: 8px;
+    background: #0d0d1a;
+    color: #eee;
+    text-align: center;
+    outline: none;
+  }
+
+  .custom-row input:focus {
+    border-color: #e94560;
+  }
+
+  .custom-start-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    background: #e94560;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .custom-start-btn:hover {
+    background: #c7304a;
+  }
+
+  /* ── Game Screen ── */
+  #game-screen {
+    display: none;
+    flex-direction: column;
+    height: 100dvh;
+  }
+
+  .player-zone {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+    min-height: 40dvh;
+  }
+
+  /* Player 2 is top (rotated 180 so it faces the opposite player) */
+  #zone-p2 {
+    background: #141428;
+    transform: rotate(180deg);
+  }
+
+  #zone-p1 {
+    background: #0d0d1a;
+  }
+
+  .player-zone.active {
+    background: #0f2a5e !important;
+  }
+
+  .player-zone.flagged {
+    background: #6b0000 !important;
+  }
+
+  .player-zone.low-time {
+    animation: pulse-warning 1s ease-in-out infinite;
+  }
+
+  @keyframes pulse-warning {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+
+  .player-label {
+    font-size: 0.85rem;
+    color: #6a6a8a;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .timer-display {
+    font-size: 4.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+
+  .player-zone.active .timer-display {
+    color: #6cb4ff;
+  }
+
+  .player-zone.flagged .timer-display {
+    color: #ff6666;
+  }
+
+  .player-zone.low-time .timer-display {
+    color: #ff9944;
+  }
+
+  .move-count {
+    font-size: 0.9rem;
+    color: #6a6a8a;
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+
+  .flag-icon {
+    display: none;
+    font-size: 3rem;
+    margin-top: 8px;
+  }
+
+  .player-zone.flagged .flag-icon {
+    display: block;
+  }
+
+  /* ── Controls Bar ── */
+  .controls-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    background: #08081a;
+    z-index: 10;
+    flex-shrink: 0;
+  }
+
+  .ctrl-btn {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #1a1a30;
+    color: #bbb;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .ctrl-btn:hover {
+    background: #2a2a50;
+    color: #fff;
+  }
+
+  /* ── Landscape Mode ── */
+  @media (orientation: landscape) and (max-height: 500px) {
+    #game-screen {
+      flex-direction: row;
+    }
+
+    #zone-p2 {
+      transform: none;
+    }
+
+    .player-zone {
+      min-height: unset;
+      min-width: 40vw;
+    }
+
+    .controls-bar {
+      flex-direction: column;
+      padding: 8px 6px;
+      gap: 8px;
+    }
+
+    .ctrl-btn {
+      padding: 8px 14px;
+      font-size: 0.8rem;
+    }
+
+    .timer-display {
+      font-size: 3rem;
+    }
+  }
+
+  /* ── Responsive: small phones ── */
+  @media (max-width: 380px) {
+    .timer-display { font-size: 3rem; }
+    #setup-screen h1 { font-size: 1.4rem; }
+    .preset-btn { padding: 10px 14px; font-size: 1rem; }
+  }
+
+  /* ── Responsive: tablets ── */
+  @media (min-width: 768px) and (orientation: portrait) {
+    .timer-display { font-size: 6rem; }
+    .player-label { font-size: 1.1rem; }
+    .move-count { font-size: 1.1rem; }
+    .ctrl-btn { padding: 12px 32px; font-size: 1rem; }
+    .preset-btn { padding: 16px 28px; font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Setup Screen ── -->
+<div id="setup-screen">
+  <h1>Chess Clock</h1>
+
+  <div class="preset-group">
+    <h2>Bullet</h2>
+    <div class="preset-buttons">
+      <button class="preset-btn" data-minutes="1" data-increment="0">1+0</button>
+      <button class="preset-btn" data-minutes="2" data-increment="1">2+1</button>
+    </div>
+  </div>
+
+  <div class="preset-group">
+    <h2>Blitz</h2>
+    <div class="preset-buttons">
+      <button class="preset-btn" data-minutes="3" data-increment="0">3+0</button>
+      <button class="preset-btn" data-minutes="3" data-increment="2">3+2</button>
+      <button class="preset-btn" data-minutes="5" data-increment="0">5+0</button>
+      <button class="preset-btn" data-minutes="5" data-increment="3">5+3</button>
+    </div>
+  </div>
+
+  <div class="preset-group">
+    <h2>Rapid</h2>
+    <div class="preset-buttons">
+      <button class="preset-btn" data-minutes="10" data-increment="0">10+0</button>
+      <button class="preset-btn" data-minutes="15" data-increment="10">15+10</button>
+      <button class="preset-btn" data-minutes="30" data-increment="0">30+0</button>
+    </div>
+  </div>
+
+  <div class="custom-section">
+    <h2>Custom</h2>
+    <div class="custom-row">
+      <label>Minutes</label>
+      <input type="number" id="custom-minutes" min="1" max="180" value="10">
+    </div>
+    <div class="custom-row">
+      <label>Increment (s)</label>
+      <input type="number" id="custom-increment" min="0" max="60" value="0">
+    </div>
+    <button class="custom-start-btn" id="btn-custom-start">Start</button>
+  </div>
+</div>
+
+<!-- ── Game Screen ── -->
+<div id="game-screen">
+  <div id="zone-p2" class="player-zone" data-player="2">
+    <span class="player-label">Player 2</span>
+    <span class="timer-display" id="timer-p2">05:00</span>
+    <span class="move-count" id="moves-p2">Moves: 0</span>
+    <span class="flag-icon">&#9873;</span>
+  </div>
+
+  <div class="controls-bar">
+    <button class="ctrl-btn" id="btn-pause">Pause</button>
+    <button class="ctrl-btn" id="btn-reset">Reset</button>
+  </div>
+
+  <div id="zone-p1" class="player-zone" data-player="1">
+    <span class="player-label">Player 1</span>
+    <span class="timer-display" id="timer-p1">05:00</span>
+    <span class="move-count" id="moves-p1">Moves: 0</span>
+    <span class="flag-icon">&#9873;</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ── State ──
+  var timeLeft = [0, 0];       // ms remaining [p1, p2]
+  var moves = [0, 0];
+  var increment = 0;           // seconds
+  var activePlayer = -1;       // 0 or 1 (index), -1 = not started
+  var paused = false;
+  var gameOver = false;
+  var timerInterval = null;
+  var lastTick = 0;
+  var lastTickSecond = [-1, -1]; // track which second we last played tick for
+
+  // ── Audio Context (lazy init) ──
+  var audioCtx = null;
+
+  function getAudioCtx() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    return audioCtx;
+  }
+
+  function playTick() {
+    try {
+      var ctx = getAudioCtx();
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = 880;
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.08);
+    } catch (e) { /* ignore audio errors */ }
+  }
+
+  function playBuzzer() {
+    try {
+      var ctx = getAudioCtx();
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = 'square';
+      osc.frequency.value = 220;
+      gain.gain.setValueAtTime(0.25, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.6);
+    } catch (e) { /* ignore audio errors */ }
+  }
+
+  // ── DOM refs ──
+  var setupScreen = document.getElementById('setup-screen');
+  var gameScreen = document.getElementById('game-screen');
+  var timerEls = [document.getElementById('timer-p1'), document.getElementById('timer-p2')];
+  var moveEls = [document.getElementById('moves-p1'), document.getElementById('moves-p2')];
+  var zones = [document.getElementById('zone-p1'), document.getElementById('zone-p2')];
+  var btnPause = document.getElementById('btn-pause');
+  var btnReset = document.getElementById('btn-reset');
+  var customMinutes = document.getElementById('custom-minutes');
+  var customIncrement = document.getElementById('custom-increment');
+  var btnCustomStart = document.getElementById('btn-custom-start');
+
+  // ── Format time ──
+  function formatTime(ms, isActive) {
+    if (ms <= 0) return '0:00';
+
+    // Low time: show SS.s when < 10 seconds and this player is active
+    if (ms < 10000 && isActive) {
+      var tenths = Math.ceil(ms / 100);
+      var sec = Math.floor(tenths / 10);
+      var frac = tenths % 10;
+      return sec + '.' + frac;
+    }
+
+    var totalSec = Math.ceil(ms / 1000);
+    var min = Math.floor(totalSec / 60);
+    var sec = totalSec % 60;
+    return min + ':' + String(sec).padStart(2, '0');
+  }
+
+  function updateDisplay() {
+    for (var i = 0; i < 2; i++) {
+      var isActive = (i === activePlayer);
+      timerEls[i].textContent = formatTime(timeLeft[i], isActive);
+      moveEls[i].textContent = 'Moves: ' + moves[i];
+
+      // Low time warning class
+      if (timeLeft[i] < 10000 && timeLeft[i] > 0 && isActive && !paused && !gameOver) {
+        zones[i].classList.add('low-time');
+      } else {
+        zones[i].classList.remove('low-time');
+      }
+    }
+  }
+
+  // ── Start Game ──
+  function startGame(minutes, inc) {
+    increment = inc;
+    var ms = minutes * 60 * 1000;
+    timeLeft = [ms, ms];
+    moves = [0, 0];
+    activePlayer = -1;
+    paused = false;
+    gameOver = false;
+    lastTickSecond = [-1, -1];
+    btnPause.textContent = 'Pause';
+    zones.forEach(function (z) { z.classList.remove('active', 'flagged', 'low-time'); });
+    updateDisplay();
+    setupScreen.style.display = 'none';
+    gameScreen.style.display = 'flex';
+  }
+
+  // ── Preset Selection ──
+  document.querySelectorAll('.preset-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var minutes = parseInt(btn.dataset.minutes, 10);
+      var inc = parseInt(btn.dataset.increment, 10);
+      startGame(minutes, inc);
+    });
+  });
+
+  // ── Custom Time Control ──
+  btnCustomStart.addEventListener('click', function () {
+    var min = parseInt(customMinutes.value, 10);
+    var inc = parseInt(customIncrement.value, 10);
+    if (isNaN(min) || min < 1) min = 1;
+    if (min > 180) min = 180;
+    if (isNaN(inc) || inc < 0) inc = 0;
+    if (inc > 60) inc = 60;
+    startGame(min, inc);
+  });
+
+  // ── Timer Tick ──
+  function startTimer() {
+    stopTimer();
+    lastTick = performance.now();
+    timerInterval = setInterval(tick, 50);
+  }
+
+  function stopTimer() {
+    if (timerInterval !== null) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+  }
+
+  function tick() {
+    if (activePlayer < 0 || paused || gameOver) return;
+    var now = performance.now();
+    var delta = now - lastTick;
+    lastTick = now;
+    timeLeft[activePlayer] -= delta;
+
+    // Sound: tick every second in last 10 seconds
+    if (timeLeft[activePlayer] > 0 && timeLeft[activePlayer] < 10000) {
+      var currentSec = Math.ceil(timeLeft[activePlayer] / 1000);
+      if (currentSec !== lastTickSecond[activePlayer] && currentSec >= 1) {
+        lastTickSecond[activePlayer] = currentSec;
+        playTick();
+      }
+    }
+
+    if (timeLeft[activePlayer] <= 0) {
+      timeLeft[activePlayer] = 0;
+      flagFall(activePlayer);
+      return;
+    }
+    updateDisplay();
+  }
+
+  function flagFall(player) {
+    gameOver = true;
+    stopTimer();
+    zones[player].classList.add('flagged');
+    zones[player].classList.remove('active', 'low-time');
+    playBuzzer();
+    updateDisplay();
+  }
+
+  // ── Player Zone Click ──
+  function onZoneClick(playerIndex) {
+    if (gameOver || paused) return;
+
+    // Game not started yet: clicking starts that player's clock
+    if (activePlayer === -1) {
+      activePlayer = playerIndex;
+      zones[activePlayer].classList.add('active');
+      startTimer();
+      updateDisplay();
+      return;
+    }
+
+    // Only the active player can switch
+    if (playerIndex !== activePlayer) return;
+
+    // Add Fischer increment to the player who just moved
+    timeLeft[activePlayer] += increment * 1000;
+    moves[activePlayer]++;
+
+    // Reset tick tracking for this player
+    lastTickSecond[activePlayer] = -1;
+
+    zones[activePlayer].classList.remove('active', 'low-time');
+    activePlayer = 1 - activePlayer;
+    zones[activePlayer].classList.add('active');
+    lastTick = performance.now();
+    updateDisplay();
+  }
+
+  zones[0].addEventListener('click', function () { onZoneClick(0); });
+  zones[1].addEventListener('click', function () { onZoneClick(1); });
+
+  // ── Keyboard: Space ──
+  document.addEventListener('keydown', function (e) {
+    if (e.code === 'Space') {
+      e.preventDefault();
+      if (activePlayer >= 0 && !gameOver && !paused) {
+        onZoneClick(activePlayer);
+      }
+    }
+  });
+
+  // ── Pause ──
+  btnPause.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (gameOver || activePlayer === -1) return;
+    paused = !paused;
+    if (paused) {
+      stopTimer();
+      btnPause.textContent = 'Resume';
+      zones.forEach(function (z) { z.classList.remove('low-time'); });
+    } else {
+      lastTick = performance.now();
+      startTimer();
+      btnPause.textContent = 'Pause';
+    }
+    updateDisplay();
+  });
+
+  // ── Reset ──
+  btnReset.addEventListener('click', function (e) {
+    e.stopPropagation();
+    stopTimer();
+    gameOver = false;
+    paused = false;
+    activePlayer = -1;
+    zones.forEach(function (z) { z.classList.remove('active', 'flagged', 'low-time'); });
+    gameScreen.style.display = 'none';
+    setupScreen.style.display = 'flex';
+  });
+})();
+</script>
+</body>
+</html>
