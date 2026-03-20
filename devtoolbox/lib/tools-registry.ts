@@ -3,7 +3,7 @@ export interface Tool {
   slug: string;
   description: string;
   longDescription: string;
-  category: "data-format" | "text-code" | "generators";
+  category: "data-format" | "text-code" | "generators" | "encoding-crypto";
   icon: string;
   keywords: string[];
   metaTitle: string;
@@ -13,6 +13,7 @@ export interface Tool {
 
 export const CATEGORIES = {
   "data-format": { label: "Data Format", icon: "📊" },
+  "encoding-crypto": { label: "Encoding & Crypto", icon: "🔐" },
   "text-code": { label: "Text & Code", icon: "📝" },
   generators: { label: "Generators", icon: "⚡" },
 } as const;
@@ -81,7 +82,7 @@ export const tools: Tool[] = [
     description: "Encode or decode Base64 strings and files.",
     longDescription:
       "Encode text or files to Base64, or decode Base64 strings back to their original form. Supports text and binary file encoding/decoding.",
-    category: "data-format",
+    category: "encoding-crypto",
     icon: "🔣",
     keywords: ["base64", "encode", "decode", "binary", "text", "convert"],
     metaTitle: "Base64 Encode & Decode Online — Free | DevToolBox",
@@ -231,6 +232,78 @@ export const tools: Tool[] = [
     metaTitle: "CSS Gradient Generator — Visual Editor | Free | DevToolBox",
     metaDescription:
       "Create beautiful CSS gradients with a visual editor online for free. Copy generated CSS code instantly.",
+    ready: true,
+  },
+
+  // ===== Encoding & Crypto Tools =====
+  {
+    name: "Hash Generator",
+    slug: "hash-generator",
+    description: "Generate MD5, SHA-1, SHA-256, SHA-512 hashes instantly.",
+    longDescription:
+      "Calculate cryptographic hash values from any text input. Supports MD5, SHA-1, SHA-256, and SHA-512 algorithms using the Web Crypto API.",
+    category: "encoding-crypto",
+    icon: "#️⃣",
+    keywords: ["hash", "md5", "sha256", "sha512", "sha1", "checksum", "crypto"],
+    metaTitle: "Hash Generator — MD5, SHA-256, SHA-512 Online | Free | DevToolBox",
+    metaDescription:
+      "Generate MD5, SHA-1, SHA-256, SHA-512 hashes online for free. Instant calculation from text input.",
+    ready: true,
+  },
+  {
+    name: "URL Encode/Decode",
+    slug: "url-encode",
+    description: "Encode or decode URLs and query parameters.",
+    longDescription:
+      "Encode special characters in URLs or decode percent-encoded strings. Supports both encodeURIComponent (for values) and encodeURI (for full URLs) modes.",
+    category: "encoding-crypto",
+    icon: "🔗",
+    keywords: ["url", "encode", "decode", "percent", "uri", "query string", "urlencode"],
+    metaTitle: "URL Encode & Decode Online — Free | DevToolBox",
+    metaDescription:
+      "Encode or decode URLs online for free. Supports encodeURIComponent and encodeURI modes.",
+    ready: true,
+  },
+  {
+    name: "HTML Entity Encode/Decode",
+    slug: "html-encode",
+    description: "Encode or decode HTML entities.",
+    longDescription:
+      "Convert special characters to HTML entities or decode HTML entities back to characters. Includes a reference table of common HTML entities.",
+    category: "encoding-crypto",
+    icon: "&;",
+    keywords: ["html", "entity", "encode", "decode", "escape", "amp", "lt", "gt"],
+    metaTitle: "HTML Entity Encoder & Decoder Online — Free | DevToolBox",
+    metaDescription:
+      "Encode or decode HTML entities online for free. Includes common entity reference table.",
+    ready: true,
+  },
+  {
+    name: "JWT Decoder",
+    slug: "jwt-decoder",
+    description: "Decode and inspect JSON Web Tokens.",
+    longDescription:
+      "Paste a JWT token to decode and inspect its header, payload, and signature. Timestamps are converted to human-readable dates. Shows token expiration status.",
+    category: "encoding-crypto",
+    icon: "🎫",
+    keywords: ["jwt", "json web token", "decode", "bearer", "auth", "token", "claim"],
+    metaTitle: "JWT Decoder — Inspect JSON Web Tokens Online | Free | DevToolBox",
+    metaDescription:
+      "Decode and inspect JWT tokens online for free. View header, payload, expiration status.",
+    ready: true,
+  },
+  {
+    name: "Unix Timestamp Converter",
+    slug: "timestamp-converter",
+    description: "Convert between Unix timestamps and human dates.",
+    longDescription:
+      "Convert Unix timestamps to human-readable dates or dates to timestamps. Shows the current time as a live-updating timestamp. Supports seconds and milliseconds.",
+    category: "encoding-crypto",
+    icon: "⏱️",
+    keywords: ["unix", "timestamp", "epoch", "date", "time", "converter", "seconds"],
+    metaTitle: "Unix Timestamp Converter Online — Free | DevToolBox",
+    metaDescription:
+      "Convert Unix timestamps to dates and dates to timestamps online for free. Live current timestamp.",
     ready: true,
   },
 ];
