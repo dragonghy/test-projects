@@ -1,4 +1,5 @@
 import { posts, getPostBySlug } from "@/lib/blog-registry";
+import { getToolBySlug } from "@/lib/tools-registry";
 import { articleContent } from "@/lib/blog/content";
 import { marked } from "marked";
 import Link from "next/link";
@@ -100,7 +101,7 @@ export default function BlogPostPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8">
           {/* Article */}
           <article
-            className="prose dark:prose-invert prose-sm max-w-none prose-headings:font-semibold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-code:before:content-none prose-code:after:content-none prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-neutral-900 dark:prose-pre:bg-neutral-950 prose-pre:border prose-pre:border-neutral-800"
+            className="prose dark:prose-invert prose-sm max-w-none prose-headings:font-semibold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-code:before:content-none prose-code:after:content-none prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-neutral-100 prose-pre:text-neutral-800 dark:prose-pre:bg-neutral-950 dark:prose-pre:text-neutral-200 prose-pre:border prose-pre:border-neutral-200 dark:prose-pre:border-neutral-800"
             dangerouslySetInnerHTML={{ __html: html }}
           />
 
@@ -129,7 +130,7 @@ export default function BlogPostPage({ params }: Props) {
           </p>
           <Link href={`/tools/${post.toolSlug}`}
             className="inline-block px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
-            Open {posts.find(p => p.slug === params.slug)?.title.split(":")[0] || "Tool"} →
+            Try {getToolBySlug(post.toolSlug)?.name || "Tool"} →
           </Link>
         </div>
       </div>
