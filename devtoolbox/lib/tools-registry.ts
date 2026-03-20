@@ -379,6 +379,78 @@ export const tools: Tool[] = [
       "Convert between camelCase, snake_case, kebab-case, PascalCase online for free. 6 naming conventions.",
     ready: true,
   },
+
+  // ===== M7 Tools =====
+  {
+    name: "Image → Base64",
+    slug: "image-to-base64",
+    description: "Convert images to Base64 data URIs.",
+    longDescription:
+      "Drag and drop or upload an image to convert it to a Base64 encoded string with data URI format. Supports PNG, JPG, GIF, SVG, and WebP. Shows preview and file size.",
+    category: "encoding-crypto",
+    icon: "🖼️",
+    keywords: ["image", "base64", "data uri", "convert", "png", "jpg", "upload", "encode"],
+    metaTitle: "Image to Base64 Converter Online — Free | DevToolBox",
+    metaDescription:
+      "Convert images to Base64 data URIs online for free. Supports PNG, JPG, GIF, SVG, WebP. Drag and drop upload.",
+    ready: true,
+  },
+  {
+    name: "HTML → Markdown",
+    slug: "html-to-markdown",
+    description: "Convert HTML to clean Markdown.",
+    longDescription:
+      "Paste HTML code to convert it into clean Markdown. Supports headings, links, images, lists, tables, code blocks, and more.",
+    category: "text-code",
+    icon: "📝",
+    keywords: ["html", "markdown", "convert", "html2md", "markup", "document"],
+    metaTitle: "HTML to Markdown Converter Online — Free | DevToolBox",
+    metaDescription:
+      "Convert HTML to Markdown online for free. Supports headings, links, lists, tables, and code blocks.",
+    ready: true,
+  },
+  {
+    name: "Placeholder Image",
+    slug: "placeholder-image",
+    description: "Generate placeholder images with custom size and color.",
+    longDescription:
+      "Create placeholder images with custom dimensions, background color, text color, and overlay text. Rendered on canvas and downloadable as PNG.",
+    category: "generators",
+    icon: "🎨",
+    keywords: ["placeholder", "image", "generate", "dummy", "mockup", "size", "color"],
+    metaTitle: "Placeholder Image Generator — Custom Size & Color | Free | DevToolBox",
+    metaDescription:
+      "Generate placeholder images with custom size and color online for free. Download as PNG.",
+    ready: true,
+  },
+  {
+    name: "HTTP Status Codes",
+    slug: "http-status",
+    description: "Browse and search all HTTP status codes.",
+    longDescription:
+      "A complete reference of all HTTP status codes grouped by category. Search by code number or name. Includes description and common usage scenarios for each code.",
+    category: "text-code",
+    icon: "📡",
+    keywords: ["http", "status", "code", "reference", "200", "404", "500", "api", "rest"],
+    metaTitle: "HTTP Status Code Reference — All Codes Explained | Free | DevToolBox",
+    metaDescription:
+      "Browse all HTTP status codes with descriptions and usage scenarios. Searchable reference for developers.",
+    ready: true,
+  },
+  {
+    name: "Slug Generator",
+    slug: "slug-generator",
+    description: "Convert text to URL-friendly slugs.",
+    longDescription:
+      "Convert any text to a clean URL-friendly slug. Automatically lowercases, replaces spaces with hyphens, and removes special characters. Real-time preview.",
+    category: "code-tools",
+    icon: "🔗",
+    keywords: ["slug", "url", "seo", "permalink", "friendly", "generate", "sanitize"],
+    metaTitle: "Slug Generator — URL-Friendly Text Converter | Free | DevToolBox",
+    metaDescription:
+      "Convert text to URL-friendly slugs online for free. Auto lowercase, replace spaces, remove special chars.",
+    ready: true,
+  },
 ];
 
 export function getToolsByCategory() {
