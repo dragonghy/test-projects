@@ -3,7 +3,7 @@ export interface Tool {
   slug: string;
   description: string;
   longDescription: string;
-  category: "data-format" | "text-code" | "generators" | "encoding-crypto";
+  category: "data-format" | "text-code" | "generators" | "encoding-crypto" | "code-tools";
   icon: string;
   keywords: string[];
   metaTitle: string;
@@ -15,6 +15,7 @@ export const CATEGORIES = {
   "data-format": { label: "Data Format", icon: "📊" },
   "encoding-crypto": { label: "Encoding & Crypto", icon: "🔐" },
   "text-code": { label: "Text & Code", icon: "📝" },
+  "code-tools": { label: "Code Tools", icon: "💻" },
   generators: { label: "Generators", icon: "⚡" },
 } as const;
 
@@ -304,6 +305,78 @@ export const tools: Tool[] = [
     metaTitle: "Unix Timestamp Converter Online — Free | DevToolBox",
     metaDescription:
       "Convert Unix timestamps to dates and dates to timestamps online for free. Live current timestamp.",
+    ready: true,
+  },
+
+  // ===== Code Tools =====
+  {
+    name: "SQL Formatter",
+    slug: "sql-formatter",
+    description: "Format and beautify SQL queries.",
+    longDescription:
+      "Format SQL queries with proper indentation and keyword highlighting. Supports multiple SQL dialects. Minify for production use.",
+    category: "code-tools",
+    icon: "🗃️",
+    keywords: ["sql", "formatter", "beautify", "query", "database", "mysql", "postgresql"],
+    metaTitle: "SQL Formatter & Beautifier Online — Free | DevToolBox",
+    metaDescription:
+      "Format and beautify SQL queries online for free. Supports multiple dialects with keyword highlighting.",
+    ready: true,
+  },
+  {
+    name: "JSON → TypeScript",
+    slug: "json-to-typescript",
+    description: "Generate TypeScript interfaces from JSON.",
+    longDescription:
+      "Paste JSON data to automatically generate TypeScript interfaces or type aliases. Supports nested objects with recursive interface generation.",
+    category: "code-tools",
+    icon: "TS",
+    keywords: ["json", "typescript", "interface", "type", "generate", "convert", "ts"],
+    metaTitle: "JSON to TypeScript Converter — Generate Interfaces | Free | DevToolBox",
+    metaDescription:
+      "Convert JSON to TypeScript interfaces online for free. Supports nested objects and arrays.",
+    ready: true,
+  },
+  {
+    name: "Cron Expression Generator",
+    slug: "cron-expression",
+    description: "Build and explain cron expressions visually.",
+    longDescription:
+      "Build cron expressions with a visual selector for minutes, hours, days, months, and weekdays. See human-readable descriptions and next 5 execution times.",
+    category: "code-tools",
+    icon: "⏰",
+    keywords: ["cron", "crontab", "schedule", "expression", "generator", "linux", "job"],
+    metaTitle: "Cron Expression Generator — Visual Builder | Free | DevToolBox",
+    metaDescription:
+      "Build cron expressions visually online for free. Human-readable descriptions and next execution times.",
+    ready: true,
+  },
+  {
+    name: "Number Base Converter",
+    slug: "number-base",
+    description: "Convert between decimal, hex, binary, and octal.",
+    longDescription:
+      "Convert numbers between decimal, hexadecimal, binary, and octal bases. Input in any format and see instant conversions to all other bases.",
+    category: "code-tools",
+    icon: "🔢",
+    keywords: ["number", "base", "converter", "decimal", "hex", "binary", "octal", "convert"],
+    metaTitle: "Number Base Converter — Decimal/Hex/Binary/Octal | Free | DevToolBox",
+    metaDescription:
+      "Convert numbers between decimal, hex, binary, and octal online for free. Instant conversions.",
+    ready: true,
+  },
+  {
+    name: "String Case Converter",
+    slug: "string-case",
+    description: "Convert between camelCase, snake_case, kebab-case, and more.",
+    longDescription:
+      "Convert text between 6 naming conventions: camelCase, snake_case, kebab-case, PascalCase, UPPER_CASE, and lowercase. One-click copy for each format.",
+    category: "code-tools",
+    icon: "Aa",
+    keywords: ["string", "case", "camelCase", "snake_case", "kebab-case", "PascalCase", "convert"],
+    metaTitle: "String Case Converter — camelCase/snake_case/kebab-case | Free | DevToolBox",
+    metaDescription:
+      "Convert between camelCase, snake_case, kebab-case, PascalCase online for free. 6 naming conventions.",
     ready: true,
   },
 ];
