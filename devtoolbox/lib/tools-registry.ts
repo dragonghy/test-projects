@@ -466,7 +466,35 @@ export function getToolBySlug(slug: string): Tool | undefined {
   return tools.find((t) => t.slug === slug);
 }
 
-export function getRelatedTools(slug: string, limit = 3): Tool[] {
+// Explicit cross-category relations for better internal linking
+const RELATED_MAP: Record<string, string[]> = {
+  "json-formatter": ["json-csv", "json-to-typescript", "yaml-json"],
+  "json-csv": ["json-formatter", "xml-formatter", "yaml-json"],
+  "base64": ["url-encode", "image-to-base64", "hash-generator"],
+  "regex-tester": ["string-case", "slug-generator", "word-counter"],
+  "jwt-decoder": ["base64", "timestamp-converter", "hash-generator"],
+  "timestamp-converter": ["jwt-decoder", "cron-expression", "number-base"],
+  "url-encode": ["base64", "html-encode", "slug-generator"],
+  "html-encode": ["url-encode", "html-to-markdown", "markdown-preview"],
+  "hash-generator": ["base64", "password-generator", "jwt-decoder"],
+  "image-to-base64": ["base64", "qr-code", "placeholder-image"],
+  "html-to-markdown": ["markdown-preview", "html-encode", "diff-checker"],
+  "slug-generator": ["string-case", "url-encode", "regex-tester"],
+  "sql-formatter": ["json-formatter", "xml-formatter", "diff-checker"],
+  "json-to-typescript": ["json-formatter", "json-csv", "string-case"],
+  "cron-expression": ["timestamp-converter", "lorem-ipsum", "number-base"],
+};
+
+export function getRelatedTools(slug: string, limit = 4): Tool[] {
+  // Use explicit relations if available
+  const explicit = RELATED_MAP[slug];
+  if (explicit) {
+    return explicit
+      .map((s) => getToolBySlug(s))
+      .filter((t): t is Tool => t !== undefined)
+      .slice(0, limit);
+  }
+  // Fallback: same category
   const current = getToolBySlug(slug);
   if (!current) return [];
   return tools

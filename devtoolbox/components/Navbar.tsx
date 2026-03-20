@@ -23,6 +23,12 @@ export default function Navbar() {
           >
             All Tools
           </Link>
+          <Link
+            href="/blog"
+            className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors hidden sm:block"
+          >
+            Blog
+          </Link>
           <button
             onClick={toggle}
             className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400"

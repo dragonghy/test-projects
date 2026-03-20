@@ -5,8 +5,11 @@ import { tools, CATEGORIES, getToolsByCategory } from "@/lib/tools-registry";
 import ToolCard from "@/components/ToolCard";
 import SearchBar from "@/components/SearchBar";
 import { generateSiteJsonLd } from "@/lib/seo";
+import { getLatestPosts } from "@/lib/blog-registry";
+import Link from "next/link";
 
 const jsonLd = generateSiteJsonLd();
+const latestPosts = getLatestPosts(4);
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -76,6 +79,31 @@ export default function Home() {
             </section>
           ))}
         </div>
+      )}
+
+      {/* Latest Articles */}
+      {!filtered && latestPosts.length > 0 && (
+        <section className="mt-16 pt-10 border-t border-neutral-200 dark:border-neutral-800">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-semibold">Latest Articles</h2>
+            <Link href="/blog" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+              View all →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {latestPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`}
+                className="group rounded-xl border border-neutral-200 dark:border-neutral-800 p-4 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+                <h3 className="font-medium text-sm text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 mb-2">
+                  {post.title}
+                </h3>
+                <div className="text-xs text-neutral-400">
+                  {post.readingTime} read
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       )}
     </div>
     </>
