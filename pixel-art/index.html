@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Art Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Top toolbar -->
+    <header id="top-bar">
+      <div class="top-left">
+        <button id="btn-clear" title="Clear Canvas">&#x1F5D1; Clear</button>
+        <button id="btn-export" title="Export PNG">&#x1F4BE; Export PNG</button>
+        <select id="grid-size-select" title="Grid Size">
+          <option value="8">8x8</option>
+          <option value="16" selected>16x16</option>
+          <option value="32">32x32</option>
+          <option value="64">64x64</option>
+        </select>
+      </div>
+      <div class="top-center">
+        <span class="app-title">Pixel Art Editor</span>
+      </div>
+      <div class="top-right">
+        <button id="btn-mirror" title="Mirror Mode">&#x1F524; Mirror</button>
+        <button id="btn-undo" title="Undo (Ctrl+Z)">&#x21A9; Undo</button>
+        <button id="btn-redo" title="Redo (Ctrl+Shift+Z)">&#x21AA; Redo</button>
+        <button id="btn-grid" title="Toggle Grid" class="active">&#x23AF; Grid</button>
+      </div>
+    </header>
+
+    <!-- Main area -->
+    <div id="main">
+      <!-- Left tool bar -->
+      <aside id="toolbar">
+        <button class="tool-btn active" data-tool="pen" title="Pen (P)">&#x270F;<span>Pen</span></button>
+        <button class="tool-btn" data-tool="eraser" title="Eraser (E)">&#x1F4A8;<span>Eraser</span></button>
+        <button class="tool-btn" data-tool="fill" title="Fill (F)">&#x1F4A7;<span>Fill</span></button>
+        <button class="tool-btn" data-tool="eyedropper" title="Eyedropper (I)">&#x1F4A9;<span>Pick</span></button>
+      </aside>
+
+      <!-- Canvas area -->
+      <div id="canvas-wrap">
+        <canvas id="pixel-canvas"></canvas>
+      </div>
+
+      <!-- Frame panel (right side) -->
+      <aside id="frame-panel">
+        <div id="frame-controls">
+          <button id="btn-add-frame" title="Add Frame">+ Frame</button>
+          <button id="btn-del-frame" title="Delete Frame">- Frame</button>
+        </div>
+        <div id="frame-list"></div>
+        <div id="animation-controls">
+          <button id="btn-play" title="Play/Pause Animation">&#x25B6; Play</button>
+          <button id="btn-onion" title="Onion Skin">&#x1F9C5; Onion</button>
+          <div id="fps-control">
+            <label for="fps-input">FPS:</label>
+            <input type="number" id="fps-input" value="4" min="1" max="24" step="1">
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom color panel -->
+    <footer id="color-panel">
+      <div id="current-color-wrap">
+        <div id="current-color"></div>
+        <span>Current</span>
+      </div>
+      <div id="palette"></div>
+      <div id="picker-wrap">
+        <input type="color" id="color-picker" value="#000000" title="Custom Color">
+        <span>Custom</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
