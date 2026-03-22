@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Countdown Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Event Countdown Timer</h1>
+      <button id="add-btn" class="btn-add">+ Add Countdown</button>
+    </header>
+
+    <!-- Preset quick-add buttons -->
+    <div id="presets" class="presets">
+      <span class="presets-label">Quick Add:</span>
+      <button class="btn-preset" data-preset="newyear">New Year</button>
+      <button class="btn-preset" data-preset="valentines">Valentine's</button>
+      <button class="btn-preset" data-preset="halloween">Halloween</button>
+      <button class="btn-preset" data-preset="christmas">Christmas</button>
+      <button class="btn-preset" data-preset="spring">Spring Festival</button>
+    </div>
+
+    <div id="empty-state" class="empty-state">
+      <p>No countdowns yet. Click the button above or use a quick-add preset!</p>
+    </div>
+
+    <div id="card-grid" class="card-grid"></div>
+  </div>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <h2 id="modal-title">New Countdown</h2>
+      <form id="countdown-form">
+        <label for="event-name">Event Name</label>
+        <input type="text" id="event-name" required placeholder="e.g. My Birthday" maxlength="50">
+
+        <label for="event-date">Target Date & Time</label>
+        <input type="datetime-local" id="event-date" required>
+
+        <label>Emoji</label>
+        <div id="emoji-picker" class="emoji-picker">
+          <button type="button" class="emoji-option selected" data-emoji="">None</button>
+          <button type="button" class="emoji-option" data-emoji="🎂">🎂</button>
+          <button type="button" class="emoji-option" data-emoji="🎉">🎉</button>
+          <button type="button" class="emoji-option" data-emoji="🎄">🎄</button>
+          <button type="button" class="emoji-option" data-emoji="🎃">🎃</button>
+          <button type="button" class="emoji-option" data-emoji="❤️">❤️</button>
+          <button type="button" class="emoji-option" data-emoji="🏖️">🏖️</button>
+          <button type="button" class="emoji-option" data-emoji="🚀">🚀</button>
+          <button type="button" class="emoji-option" data-emoji="📅">📅</button>
+          <button type="button" class="emoji-option" data-emoji="🎓">🎓</button>
+        </div>
+
+        <label>Card Color</label>
+        <div id="color-picker" class="color-picker">
+          <button type="button" class="color-option selected" data-color="" title="Default"></button>
+          <button type="button" class="color-option" data-color="#e94560" title="Red"></button>
+          <button type="button" class="color-option" data-color="#0f3460" title="Blue"></button>
+          <button type="button" class="color-option" data-color="#533483" title="Purple"></button>
+          <button type="button" class="color-option" data-color="#1a936f" title="Green"></button>
+          <button type="button" class="color-option" data-color="#c84b31" title="Orange"></button>
+          <button type="button" class="color-option" data-color="#4a4e69" title="Slate"></button>
+        </div>
+
+        <input type="hidden" id="edit-id" value="">
+
+        <div class="modal-actions">
+          <button type="button" id="cancel-btn" class="btn-cancel">Cancel</button>
+          <button type="submit" class="btn-submit" id="submit-btn">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
