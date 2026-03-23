@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "home": "首页",
+    "story": "我们的故事",
+    "info": "婚礼信息",
+    "schedule": "日程安排",
+    "gallery": "相册",
+    "rsvp": "回复出席",
+    "guestbook": "祝福墙",
+    "admin": "管理"
+  },
+  "hero": {
+    "subtitle": "我们要结婚了",
+    "groomName": "华阳",
+    "brideName": "伴侣",
+    "connector": "·",
+    "groomNameEn": "Huayang",
+    "brideNameEn": "Partner",
+    "connectorEn": "&",
+    "date": "2026年5月23日",
+    "location": "哈佛姆贝",
+    "countdown": {
+      "days": "天",
+      "hours": "时",
+      "minutes": "分",
+      "seconds": "秒"
+    },
+    "scrollDown": "向下滚动"
+  },
+  "story": {
+    "sectionTitle": "我们的故事",
+    "sectionSubtitle": "从相识到相知，每一步都充满爱意",
+    "nodes": [
+      {
+        "date": "2020年春天",
+        "title": "初次相遇",
+        "description": "在一个阳光明媚的午后，我们在大学图书馆偶然相遇。一本掉落的书，一个温暖的微笑，命运就此改变。"
+      },
+      {
+        "date": "2021年夏天",
+        "title": "第一次旅行",
+        "description": "我们一起踏上了前往云南的旅程。在洱海边的日落中，我们确认了彼此就是对的人。"
+      },
+      {
+        "date": "2023年冬天",
+        "title": "求婚时刻",
+        "description": "在北海道的皑皑白雪中，一个准备了许久的惊喜，一句真挚的'嫁给我'，她含泪点头。"
+      },
+      {
+        "date": "2026年5月",
+        "title": "携手一生",
+        "description": "我们即将在亲友的祝福中，许下一生的承诺。感谢每一位见证我们幸福的人。"
+      }
+    ]
+  },
+  "weddingInfo": {
+    "sectionTitle": "婚礼信息",
+    "sectionSubtitle": "期待您的莅临",
+    "cards": {
+      "dateTime": {
+        "title": "日期与时间",
+        "date": "2026年5月23日（星期六）",
+        "ceremony": "仪式：下午2:00",
+        "reception": "晚宴：下午6:00"
+      },
+      "location": {
+        "title": "婚礼地点",
+        "venue": "哈佛姆贝庄园",
+        "address": "哈佛姆贝中心大道 123号",
+        "mapNote": "地图位置"
+      },
+      "dressCode": {
+        "title": "着装要求",
+        "style": "正式礼服",
+        "colors": "建议色系：香槟色、浅金色、象牙白",
+        "note": "请避免穿着纯白色"
+      }
+    }
+  },
+  "schedule": {
+    "sectionTitle": "当日流程",
+    "sectionSubtitle": "美好的一天，与您共度",
+    "events": [
+      {
+        "time": "13:00",
+        "title": "来宾签到",
+        "description": "欢迎莅临，签到并享用迎宾饮品"
+      },
+      {
+        "time": "14:00",
+        "title": "婚礼仪式",
+        "description": "在花园中举行浪漫的交换誓言仪式"
+      },
+      {
+        "time": "16:00",
+        "title": "婚宴晚会",
+        "description": "美食、美酒与欢笑，共同庆祝这特别的日子"
+      },
+      {
+        "time": "20:00",
+        "title": "温馨送别",
+        "description": "感谢您的到来，带着祝福与美好回忆踏上归途"
+      }
+    ]
+  },
+  "gallery": {
+    "sectionTitle": "甜蜜瞬间",
+    "sectionSubtitle": "记录我们的美好时光",
+    "photos": [
+      { "label": "初遇的咖啡馆", "color": "#C9A96E" },
+      { "label": "海边漫步", "color": "#8FAADC" },
+      { "label": "圣诞夜晚", "color": "#C45B5B" },
+      { "label": "求婚瞬间", "color": "#D4A843" },
+      { "label": "旅行日记", "color": "#7BAF7B" },
+      { "label": "日常点滴", "color": "#B08FC7" },
+      { "label": "订婚派对", "color": "#E8B4B8" },
+      { "label": "婚纱试穿", "color": "#A0C4C4" }
+    ],
+    "close": "关闭"
+  },
+  "rsvp": {
+    "pageTitle": "回复出席",
+    "pageSubtitle": "请在2026年4月15日前回复",
+    "form": {
+      "name": "您的姓名",
+      "namePlaceholder": "请输入您的姓名",
+      "guestCount": "出席人数",
+      "attendance": "是否出席",
+      "attendanceYes": "荣幸出席",
+      "attendanceNo": "遗憾缺席",
+      "dietary": "饮食偏好（选填）",
+      "dietaryPlaceholder": "如有特殊饮食要求请注明",
+      "message": "祝福留言（选填）",
+      "messagePlaceholder": "写下您对新人的祝福...",
+      "submit": "提交回复",
+      "submitting": "提交中..."
+    },
+    "success": {
+      "title": "感谢您的回复！",
+      "message": "我们已收到您的回复，期待在婚礼上与您相见。",
+      "back": "返回首页"
+    }
+  },
+  "guestbook": {
+    "sectionTitle": "祝福墙",
+    "sectionSubtitle": "留下您的美好祝愿",
+    "form": {
+      "name": "您的姓名",
+      "namePlaceholder": "请输入姓名",
+      "message": "祝福留言",
+      "messagePlaceholder": "写下您对新人的祝福...",
+      "submit": "送出祝福",
+      "submitting": "发送中..."
+    },
+    "emptyState": "还没有祝福留言，成为第一个送出祝福的人吧！"
+  },
+  "admin": {
+    "pageTitle": "管理面板",
+    "rsvpTitle": "回复列表",
+    "guestbookTitle": "祝福留言",
+    "noRsvp": "暂无回复",
+    "noGuestbook": "暂无留言",
+    "table": {
+      "name": "姓名",
+      "guests": "人数",
+      "attendance": "出席",
+      "dietary": "饮食偏好",
+      "message": "留言",
+      "time": "提交时间",
+      "yes": "是",
+      "no": "否"
+    }
+  },
+  "footer": {
+    "message": "期待与您共度这美好的一天",
+    "copyright": "Huayang & Partner 2026"
+  }
+}

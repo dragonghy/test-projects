@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "home": "Home",
+    "story": "Our Story",
+    "info": "Wedding Info",
+    "schedule": "Schedule",
+    "gallery": "Gallery",
+    "rsvp": "RSVP",
+    "guestbook": "Guestbook",
+    "admin": "Admin"
+  },
+  "hero": {
+    "subtitle": "We're Getting Married",
+    "groomName": "华阳",
+    "brideName": "伴侣",
+    "connector": "·",
+    "groomNameEn": "Huayang",
+    "brideNameEn": "Partner",
+    "connectorEn": "&",
+    "date": "May 23, 2026",
+    "location": "Haferfumbe",
+    "countdown": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Min",
+      "seconds": "Sec"
+    },
+    "scrollDown": "Scroll Down"
+  },
+  "story": {
+    "sectionTitle": "Our Story",
+    "sectionSubtitle": "Every step of our journey has been filled with love",
+    "nodes": [
+      {
+        "date": "Spring 2020",
+        "title": "First Encounter",
+        "description": "On a sunny afternoon, we met by chance in the university library. A dropped book, a warm smile, and fate changed forever."
+      },
+      {
+        "date": "Summer 2021",
+        "title": "First Trip Together",
+        "description": "We set off on our first journey together to Yunnan. Watching the sunset by Erhai Lake, we knew we had found the one."
+      },
+      {
+        "date": "Winter 2023",
+        "title": "The Proposal",
+        "description": "Among the pristine snow of Hokkaido, a long-prepared surprise, a heartfelt 'Will you marry me?' — and she said yes, with tears of joy."
+      },
+      {
+        "date": "May 2026",
+        "title": "Forever Together",
+        "description": "Surrounded by our loved ones, we will make our lifelong vows. Thank you to everyone who has been part of our happiness."
+      }
+    ]
+  },
+  "weddingInfo": {
+    "sectionTitle": "Wedding Information",
+    "sectionSubtitle": "We look forward to your presence",
+    "cards": {
+      "dateTime": {
+        "title": "Date & Time",
+        "date": "Saturday, May 23, 2026",
+        "ceremony": "Ceremony: 2:00 PM",
+        "reception": "Reception: 6:00 PM"
+      },
+      "location": {
+        "title": "Location",
+        "venue": "Haferfumbe Estate",
+        "address": "123 Central Avenue, Haferfumbe",
+        "mapNote": "View on Map"
+      },
+      "dressCode": {
+        "title": "Dress Code",
+        "style": "Formal Attire",
+        "colors": "Suggested palette: champagne, light gold, ivory",
+        "note": "Please avoid wearing pure white"
+      }
+    }
+  },
+  "schedule": {
+    "sectionTitle": "Day Schedule",
+    "sectionSubtitle": "A beautiful day to share with you",
+    "events": [
+      {
+        "time": "1:00 PM",
+        "title": "Guest Arrival",
+        "description": "Welcome! Please sign in and enjoy welcome drinks"
+      },
+      {
+        "time": "2:00 PM",
+        "title": "Wedding Ceremony",
+        "description": "Exchange of vows in the romantic garden setting"
+      },
+      {
+        "time": "4:00 PM",
+        "title": "Reception & Dinner",
+        "description": "Fine dining, wines, and celebration of this special day"
+      },
+      {
+        "time": "8:00 PM",
+        "title": "Farewell",
+        "description": "Thank you for coming. Take home our blessings and wonderful memories"
+      }
+    ]
+  },
+  "gallery": {
+    "sectionTitle": "Sweet Moments",
+    "sectionSubtitle": "Capturing our beautiful memories",
+    "photos": [
+      { "label": "The Cafe Where We Met", "color": "#C9A96E" },
+      { "label": "Beach Walk", "color": "#8FAADC" },
+      { "label": "Christmas Eve", "color": "#C45B5B" },
+      { "label": "The Proposal", "color": "#D4A843" },
+      { "label": "Travel Diary", "color": "#7BAF7B" },
+      { "label": "Daily Life", "color": "#B08FC7" },
+      { "label": "Engagement Party", "color": "#E8B4B8" },
+      { "label": "Dress Fitting", "color": "#A0C4C4" }
+    ],
+    "close": "Close"
+  },
+  "rsvp": {
+    "pageTitle": "RSVP",
+    "pageSubtitle": "Please respond by April 15, 2026",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "Enter your full name",
+      "guestCount": "Number of Guests",
+      "attendance": "Will you attend?",
+      "attendanceYes": "Joyfully Accept",
+      "attendanceNo": "Regretfully Decline",
+      "dietary": "Dietary Preferences (optional)",
+      "dietaryPlaceholder": "Please note any dietary requirements",
+      "message": "Message (optional)",
+      "messagePlaceholder": "Write your wishes for the couple...",
+      "submit": "Submit RSVP",
+      "submitting": "Submitting..."
+    },
+    "success": {
+      "title": "Thank You!",
+      "message": "We've received your RSVP. We look forward to celebrating with you!",
+      "back": "Back to Home"
+    }
+  },
+  "guestbook": {
+    "sectionTitle": "Guestbook",
+    "sectionSubtitle": "Leave your blessings and wishes",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "Enter your name",
+      "message": "Your Message",
+      "messagePlaceholder": "Write your wishes for the couple...",
+      "submit": "Send Wishes",
+      "submitting": "Sending..."
+    },
+    "emptyState": "No messages yet. Be the first to leave a blessing!"
+  },
+  "admin": {
+    "pageTitle": "Admin Panel",
+    "rsvpTitle": "RSVP Responses",
+    "guestbookTitle": "Guestbook Messages",
+    "noRsvp": "No RSVP responses yet",
+    "noGuestbook": "No guestbook messages yet",
+    "table": {
+      "name": "Name",
+      "guests": "Guests",
+      "attendance": "Attending",
+      "dietary": "Dietary",
+      "message": "Message",
+      "time": "Submitted",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "footer": {
+    "message": "We look forward to sharing this beautiful day with you",
+    "copyright": "Huayang & Partner 2026"
+  }
+}
