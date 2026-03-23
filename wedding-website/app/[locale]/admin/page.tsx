@@ -5,20 +5,20 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface RsvpEntry {
-  id: string;
+  id: number;
   name: string;
-  attendance: boolean;
-  guestCount: number;
+  attending: boolean;
+  guests: number;
   dietary: string;
   message: string;
-  createdAt: string;
+  created_at: string;
 }
 
 interface GuestbookEntry {
-  id: string;
+  id: number;
   name: string;
   message: string;
-  createdAt: string;
+  created_at: string;
 }
 
 export default function AdminPage() {
@@ -38,8 +38,8 @@ export default function AdminPage() {
   }, []);
 
   const totalGuests = rsvps
-    .filter((r) => r.attendance)
-    .reduce((sum, r) => sum + r.guestCount, 0);
+    .filter((r) => r.attending)
+    .reduce((sum, r) => sum + r.guests, 0);
 
   return (
     <div className="min-h-screen pt-24 pb-16 px-4">
@@ -130,16 +130,16 @@ export default function AdminPage() {
                       <td className="px-4 py-3">
                         <span
                           className={`inline-flex px-2 py-0.5 rounded-full text-xs ${
-                            rsvp.attendance
+                            rsvp.attending
                               ? "bg-green-50 text-green-700"
                               : "bg-red-50 text-red-700"
                           }`}
                         >
-                          {rsvp.attendance ? t("table.yes") : t("table.no")}
+                          {rsvp.attending ? t("table.yes") : t("table.no")}
                         </span>
                       </td>
                       <td className="px-4 py-3 text-secondary">
-                        {rsvp.guestCount}
+                        {rsvp.guests}
                       </td>
                       <td className="px-4 py-3 text-secondary">
                         {rsvp.dietary || "-"}
@@ -148,7 +148,7 @@ export default function AdminPage() {
                         {rsvp.message || "-"}
                       </td>
                       <td className="px-4 py-3 text-secondary/60 text-xs">
-                        {new Date(rsvp.createdAt).toLocaleDateString()}
+                        {new Date(rsvp.created_at).toLocaleDateString()}
                       </td>
                     </tr>
                   ))}
@@ -186,7 +186,7 @@ export default function AdminPage() {
                       {entry.name}
                     </span>
                     <span className="text-secondary/50 text-xs">
-                      {new Date(entry.createdAt).toLocaleDateString()}
+                      {new Date(entry.created_at).toLocaleDateString()}
                     </span>
                   </div>
                 </div>

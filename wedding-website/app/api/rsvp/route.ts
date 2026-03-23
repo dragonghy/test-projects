@@ -1,36 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
-const DATA_FILE = path.join(process.cwd(), "data", "rsvp.json");
-
-function ensureDataFile() {
-  const dir = path.dirname(DATA_FILE);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-  if (!fs.existsSync(DATA_FILE)) {
-    fs.writeFileSync(DATA_FILE, "[]", "utf-8");
-  }
-}
-
-function readEntries() {
-  ensureDataFile();
-  try {
-    return JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
-  } catch {
-    return [];
-  }
-}
-
-function writeEntries(entries: unknown[]) {
-  ensureDataFile();
-  fs.writeFileSync(DATA_FILE, JSON.stringify(entries, null, 2), "utf-8");
-}
+import { supabase } from "@/lib/supabase";
 
 export async function GET() {
-  const entries = readEntries();
-  return NextResponse.json(entries);
+  const { data, error } = await supabase
+    .from("rsvp")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+  return NextResponse.json(data);
 }
 
 export async function POST(request: NextRequest) {
@@ -45,25 +25,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const entry = {
-      id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
-      name,
-      attendance: Boolean(attendance),
-      guestCount: Number(guestCount) || 1,
-      dietary: dietary || "",
-      message: message || "",
-      createdAt: new Date().toISOString(),
-    };
+    const { data, error } = await supabase
+      .from("rsvp")
+      .insert({
+        name,
+        attending: Boolean(attendance),
+        guests: Number(guestCount) || 1,
+        dietary: dietary || "",
+        message: message || "",
+      })
+      .select()
+      .single();
 
-    const entries = readEntries();
-    entries.unshift(entry);
-    writeEntries(entries);
-
-    return NextResponse.json(entry, { status: 201 });
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    return NextResponse.json(data, { status: 201 });
   } catch {
-    return NextResponse.json(
-      { error: "Invalid request" },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 }
