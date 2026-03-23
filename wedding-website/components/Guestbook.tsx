@@ -6,10 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import AnimateOnScroll from "./AnimateOnScroll";
 
 interface GuestbookEntry {
-  id: string;
+  id: number;
   name: string;
   message: string;
-  createdAt: string;
+  created_at: string;
 }
 
 export default function Guestbook() {
@@ -131,7 +131,7 @@ export default function Guestbook() {
                     {entry.name}
                   </span>
                   <span className="text-secondary/50 text-xs">
-                    {new Date(entry.createdAt).toLocaleDateString()}
+                    {new Date(entry.created_at).toLocaleDateString()}
                   </span>
                 </div>
               </motion.div>
