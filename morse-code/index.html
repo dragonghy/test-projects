@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code Translator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Morse Code Translator</h1>
+    </header>
+
+    <main>
+        <div class="translator">
+            <div class="panel">
+                <label for="text-input">Text</label>
+                <textarea id="text-input" placeholder="Enter text here..."></textarea>
+                <div class="panel-footer">
+                    <div class="panel-actions">
+                        <button id="copy-text" class="btn">Copy</button>
+                        <button id="clear-text" class="btn">Clear</button>
+                    </div>
+                    <span class="char-count" id="text-count">0 chars</span>
+                </div>
+            </div>
+
+            <button id="swap-btn" class="btn btn-swap" title="Swap">&#8644;</button>
+
+            <div class="panel">
+                <label for="morse-input">Morse Code</label>
+                <textarea id="morse-input" placeholder="Enter morse code (use . and -, space between letters, / between words)"></textarea>
+                <div class="panel-footer">
+                    <div class="panel-actions">
+                        <button id="copy-morse" class="btn">Copy</button>
+                        <button id="clear-morse" class="btn">Clear</button>
+                    </div>
+                    <span class="char-count" id="morse-count">0 chars</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="playback-controls">
+            <button id="play-btn" class="btn btn-play">Play</button>
+            <button id="stop-btn" class="btn btn-stop" disabled>Stop</button>
+            <label for="wpm-select">Speed:</label>
+            <select id="wpm-select">
+                <option value="5">5 WPM</option>
+                <option value="10">10 WPM</option>
+                <option value="15" selected>15 WPM</option>
+                <option value="20">20 WPM</option>
+                <option value="25">25 WPM</option>
+            </select>
+        </div>
+
+        <div id="animation-container" class="animation-container" hidden>
+            <div id="animation-symbols" class="animation-symbols"></div>
+        </div>
+
+        <div class="reference-table">
+            <h2>Morse Code Reference</h2>
+            <div id="ref-grid" class="ref-grid"></div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
