@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Password Generator</h1>
+
+    <div class="password-display">
+      <span id="password" class="password-text">generating...</span>
+      <button id="copyBtn" class="copy-btn" title="Copy to clipboard">Copy</button>
+    </div>
+
+    <div class="strength-section">
+      <div class="strength-bar">
+        <div id="strengthFill" class="strength-fill"></div>
+      </div>
+      <div class="strength-info">
+        <span id="strengthLabel" class="strength-label">--</span>
+        <span id="entropyValue" class="entropy-value">-- bits</span>
+      </div>
+    </div>
+
+    <div class="options">
+      <div class="option-row">
+        <label for="lengthSlider">Length: <span id="lengthValue">16</span></label>
+        <input type="range" id="lengthSlider" min="8" max="128" value="16">
+      </div>
+
+      <div class="option-row">
+        <label>
+          <input type="checkbox" id="uppercase" checked>
+          Uppercase (A-Z)
+        </label>
+      </div>
+      <div class="option-row">
+        <label>
+          <input type="checkbox" id="lowercase" checked>
+          Lowercase (a-z)
+        </label>
+      </div>
+      <div class="option-row">
+        <label>
+          <input type="checkbox" id="numbers" checked>
+          Numbers (0-9)
+        </label>
+      </div>
+      <div class="option-row">
+        <label>
+          <input type="checkbox" id="symbols" checked>
+          Symbols (!@#$%^&*)
+        </label>
+      </div>
+      <div class="option-row">
+        <label>
+          <input type="checkbox" id="excludeAmbiguous">
+          Exclude ambiguous (0, O, l, 1, I)
+        </label>
+      </div>
+    </div>
+
+    <button id="generateBtn" class="generate-btn">Generate</button>
+
+    <div class="history-section">
+      <h2>History</h2>
+      <ul id="historyList" class="history-list"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

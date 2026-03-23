@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.password-display {
+  display: flex;
+  align-items: center;
+  background: #0f3460;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.password-text {
+  flex: 1;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.35rem;
+  word-break: break-all;
+  color: #e94560;
+  min-height: 1.5em;
+}
+
+.copy-btn {
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background: #c73650;
+}
+
+.copy-btn.copied {
+  background: #27ae60;
+}
+
+.strength-section {
+  margin-bottom: 20px;
+}
+
+.strength-bar {
+  height: 6px;
+  background: #0f3460;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  transition: width 0.3s, background 0.3s;
+}
+
+.strength-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.strength-label {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.entropy-value {
+  font-size: 0.8rem;
+  color: #888;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.options {
+  margin-bottom: 24px;
+}
+
+.option-row {
+  margin-bottom: 12px;
+}
+
+.option-row label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin-top: 8px;
+  accent-color: #e94560;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #e94560;
+  cursor: pointer;
+}
+
+.generate-btn {
+  width: 100%;
+  padding: 14px;
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.generate-btn:hover {
+  background: #c73650;
+}
+
+.history-section {
+  margin-top: 24px;
+  border-top: 1px solid #0f3460;
+  padding-top: 16px;
+}
+
+.history-section h2 {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.history-list {
+  list-style: none;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.history-list li {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  color: #8a8a9a;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  background: #0f3460;
+  word-break: break-all;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.history-list li:hover {
+  background: #153a6e;
+  color: #e0e0e0;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 16px;
+  }
+
+  .password-text {
+    font-size: 1.1rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+}
