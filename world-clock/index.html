@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Clock Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>World Clock Dashboard</h1>
+    <div class="header-controls">
+      <button id="format-toggle" class="header-btn" title="Toggle 12h/24h">24H</button>
+      <button id="theme-toggle" class="header-btn" title="Toggle Theme">Light</button>
+      <button id="add-clock-btn" title="Add Clock">+ Add Clock</button>
+    </div>
+  </header>
+
+  <div id="clock-grid" class="clock-grid"></div>
+
+  <!-- Add Clock Modal -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add Clock</h2>
+        <button id="modal-close" class="modal-close">&times;</button>
+      </div>
+      <input type="text" id="city-search" placeholder="Search city..." autocomplete="off">
+      <ul id="city-list" class="city-list"></ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
