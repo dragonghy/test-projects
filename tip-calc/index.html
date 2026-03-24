@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tip Calculator</h1>
+
+    <section class="input-section">
+      <div class="row-between">
+        <label for="bill-amount">Bill Amount</label>
+        <div class="currency-selector">
+          <select id="currency-select">
+            <option value="USD" selected>$ USD</option>
+            <option value="EUR">&euro; EUR</option>
+            <option value="GBP">&pound; GBP</option>
+            <option value="JPY">&yen; JPY</option>
+            <option value="CNY">&yen; CNY</option>
+          </select>
+        </div>
+      </div>
+      <input type="number" id="bill-amount" min="0" step="0.01" placeholder="0.00" autofocus>
+    </section>
+
+    <section class="input-section">
+      <label>Tip Percentage</label>
+      <div class="tip-buttons">
+        <button class="tip-btn" data-tip="10">10%</button>
+        <button class="tip-btn" data-tip="15">15%</button>
+        <button class="tip-btn" data-tip="18">18%</button>
+        <button class="tip-btn" data-tip="20">20%</button>
+        <button class="tip-btn" data-tip="25">25%</button>
+      </div>
+      <div class="custom-tip">
+        <label for="custom-tip">Custom %</label>
+        <input type="number" id="custom-tip" min="0" max="100" step="1" placeholder="0">
+      </div>
+    </section>
+
+    <section class="input-section">
+      <label for="split-count">Split Between</label>
+      <div class="split-control">
+        <button id="split-minus" class="split-btn" aria-label="Decrease">-</button>
+        <input type="number" id="split-count" min="1" max="20" value="1">
+        <button id="split-plus" class="split-btn" aria-label="Increase">+</button>
+      </div>
+    </section>
+
+    <section class="input-section">
+      <label>Rounding</label>
+      <div class="round-toggle">
+        <button class="round-btn" id="round-none" data-round="none">None</button>
+        <button class="round-btn" id="round-up" data-round="up">Round Up</button>
+        <button class="round-btn" id="round-down" data-round="down">Round Down</button>
+      </div>
+    </section>
+
+    <section class="results">
+      <div class="result-row">
+        <span class="result-label">Tip Amount</span>
+        <span class="result-value" id="tip-amount">$0.00</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Total with Tip</span>
+        <span class="result-value" id="total-amount">$0.00</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Tip per Person</span>
+        <span class="result-value" id="tip-per-person">$0.00</span>
+      </div>
+      <div class="result-row highlight">
+        <span class="result-label">Total per Person</span>
+        <span class="result-value" id="total-per-person">$0.00</span>
+      </div>
+    </section>
+
+    <button id="reset-btn">Reset</button>
+
+    <section class="history-section" id="history-section" style="display:none;">
+      <h2>Recent Calculations</h2>
+      <ul id="history-list"></ul>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
